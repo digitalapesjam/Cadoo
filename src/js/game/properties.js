@@ -8,8 +8,8 @@ module.exports =
   , mute: false
   , showStats: true
   , size:
-    { x: 800
-    , y: 600
+    { x: 1280
+    , y: 720
     }
   , analyticsId: 'UA-50892214-2'
   };
