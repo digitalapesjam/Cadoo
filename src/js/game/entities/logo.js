@@ -12,7 +12,7 @@ Logo.prototype.create= function() {
 }
 
 Logo.prototype.update = function() {
-        this.game.physics.arcade.collide(this.sprite, Platform.group);
+        //this.game.physics.arcade.collide(this.sprite, Platform.group);
 }
 
 module.exports = Logo;
