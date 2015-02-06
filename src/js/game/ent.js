@@ -7,7 +7,6 @@ Ent.prototype.update = function() {
     if (false === !!this.layers[l]) {continue;}
     var ents = this.layers[l];
     for (var k in ents) {
-      console.log(k, ents[k], ents);
       if (ents.hasOwnProperty(k)) {
         ents[k].update();
       }
