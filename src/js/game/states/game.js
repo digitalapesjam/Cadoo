@@ -1,10 +1,12 @@
 module.exports = function(game) {
-
+  var Logo = require("../entities/logo.js");
+    
   var gameState = {};
 
   gameState.create = function () {
-    var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-    logo.anchor.setTo(0.5, 0.5);
+    var logo = new Logo(game,0,0);
+    console.info(logo);
+    logo.create();
   };
 
   return gameState;
