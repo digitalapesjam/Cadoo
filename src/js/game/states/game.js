@@ -3,6 +3,7 @@ var Ent = require('../ent.js');
 module.exports = function(game) {
   var ent = new Ent();
   var Logo = require("../entities/logo.js");
+  var Camera = require("../entities/camera.js");
     
   var gameState = {};
 
@@ -14,8 +15,9 @@ module.exports = function(game) {
       
     var logo = new Logo(game, game.width/2,0);
     logo.create();
-      
-    game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
+    var camera = new Camera(game, logo.sprite);  
+    camera.create();
+    //game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
 
     ent.register(0, 'logo', logo);
   };
