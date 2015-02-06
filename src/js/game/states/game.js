@@ -1,4 +1,7 @@
+var Ent = require('../ent.js');
+
 module.exports = function(game) {
+  var ent = new Ent();
   var Logo = require("../entities/logo.js");
     
   var gameState = {};
@@ -6,8 +9,12 @@ module.exports = function(game) {
   gameState.create = function () {
     var logo = new Logo(game,0,0);
     console.info(logo);
-    logo.create();
+    ent.register(0, 'logo', logo);
   };
+
+  gameState.update = function() {
+    ent.update();
+  }
 
   return gameState;
 };
