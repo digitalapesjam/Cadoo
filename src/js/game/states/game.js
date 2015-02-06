@@ -20,6 +20,8 @@ module.exports = function(game) {
     //game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
 
     ent.register(0, 'logo', logo);
+    ent.register(0, 'camera', logo);
+
   };
 
   gameState.update = function() {
