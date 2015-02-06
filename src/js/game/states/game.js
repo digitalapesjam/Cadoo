@@ -2,7 +2,7 @@ var Ent = require('../ent.js');
 
 module.exports = function(game) {
   var ent = new Ent();
-  var Logo = require("../entities/logo.js");
+  var Fallingman = require("../entities/fallingman.js");
   var Camera = require("../entities/camera.js");
     
   var gameState = {};
@@ -13,14 +13,12 @@ module.exports = function(game) {
     game.physics.startSystem(Phaser.Physics.ARCADE);
       game.physics.arcade.gravity.y = 100;
       
-    var logo = new Logo(game, game.width/2,0);
-    logo.create();
-    var camera = new Camera(game, logo.sprite);  
-    camera.create();
+    var fallingman = new Fallingman(game, game.width/2,0);
+    var camera = new Camera(game, fallingman.sprite);  
     //game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
 
-    ent.register(0, 'logo', logo);
-    ent.register(0, 'camera', logo);
+    ent.register(0, 'fallingman', fallingman);
+    ent.register(0, 'camera', camera);
 
   };
 
