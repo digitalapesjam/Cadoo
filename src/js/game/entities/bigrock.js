@@ -7,10 +7,18 @@ var BigRock = function BigRock(game, posx, posy, maxVelY) {
         this.emitter = null;
         this.trembleTween = null;
         this.maxVelY = maxVelY;
+
+
+
 }
 
 BigRock.prototype.create= function() {
         this.sprite = this.game.add.sprite(this.posx, this.posy, 'bigrock');
+        this.crack = function(){
+            this.sprite.animations.add('crack');
+            this.sprite.animations.play('crack', 10, false);
+        }
+
         //this.sprite.width= 600;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.allowGravity = true;
@@ -41,6 +49,9 @@ BigRock.prototype.create= function() {
         this.emitter.setAlpha(0.3, 0.6, 3000);
         this.emitter.setScale(0.1, 0.1, 0.2, 0.2, 2000, Phaser.Easing.Quintic.Out);
         this.emitter.gravity = -100;
+
+
+        
 
         //this.emitter.start(false, 600, 10);
 
