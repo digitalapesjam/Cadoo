@@ -17,11 +17,13 @@ Collectibles.prototype.create = function() {
   var width = this.game.width * 2 / 3;
   var offset = this.game.width / 6;
 
-  var max = (width/s) * (this.worldHeight/s);
+  var max = ((width/s) * (this.worldHeight/s)); // * 3 / 5;
   var taken = {o:true};
   var m = 0;
 
-  var numStars = Math.max(Math.round(this.worldHeight / 100), 10);
+  var numStars = Math.max(Math.round(this.worldHeight / 50), 10);
+
+  var heightOffsetGravity = this.worldHeight * 5 / 7;
 
   for(var i = 0; i < numStars; i++) {
     while(m==0 || m in taken) {
@@ -37,10 +39,15 @@ Collectibles.prototype.create = function() {
       y += s;
       x -= width;
     }
-    console.log('create star at ', offset + x, y, 'gen', m, 'max', max);
     var star = this.group.create(offset + x, y, 'star');
-    star.body.gravity.y = -30;
-    star.body.bounce.y = 0.2;
+    // if (y < heightOffsetGravity) {
+    //   var g = y / heightOffsetGravity;
+    //   console.log(g,y,heightOffsetGravity);
+    //   star.body.gravity.y = -30 * (1-g);
+    // }
+    // console.log('create star at ', offset + x, y, 'gen', m, 'max', max, 'g', star.body.gravity.y, heightOffsetGravity);
+    //star.body.bounce.y = 0.2;
+    star.body.allowGravity = false;
   }
 };
 
