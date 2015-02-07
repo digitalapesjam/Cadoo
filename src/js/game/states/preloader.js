@@ -12,6 +12,10 @@ module.exports = function (game) {
         game.load.image('bigrock', 'images/bigrock2.png#grunt-cache-bust');
         game.load.image('star', 'images/star.png#grunt-cache-bust');
         game.load.audio('music', 'audio/ScatterNoise1.mp3');
+        game.load.game.load.spritesheet('bird', 'images/bird.png#grunt-cache-bust', 30, 26);
+        game.load.image('branch', 'images/branch.png#grunt-cache-bust');
+        game.load.image('root', 'images/root.png#grunt-cache-bust');
+        game.load.image('ledge', 'images/ledge.png#grunt-cache-bust');
     };
 
     preloader.create = function () {

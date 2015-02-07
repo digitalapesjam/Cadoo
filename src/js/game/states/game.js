@@ -1,6 +1,10 @@
 var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
+<<<<<<< HEAD
 var worldHeight = 25000;
+=======
+var worldHeight = 12000;
+>>>>>>> aa83f858503ce4e50e7eb3a82f50854832c83fd5
 
 module.exports = function (game) {
     var ent = new Ent();
@@ -16,6 +20,7 @@ module.exports = function (game) {
     var ScoreDisplay = require('../score.js');
     var ManCollectibleCollision = require('../collisions/manCollectibleCollision.js');
     var CollectibleFloorCollision = require('../collisions/collectibleFloorCollision.js');
+    var ManSidesCollision = require("../collisions/manSidesCollision.js");
 
     var gameState = {};
 
@@ -45,6 +50,7 @@ module.exports = function (game) {
         ent.register(0, 'collectibles', collectibles);
         
         collisionManager.addCollision(new ManFloorCollision(fallingman, floor));
+        collisionManager.addCollision(new ManSidesCollision(fallingman,sidetiles));
         collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay)));
         collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
     };
