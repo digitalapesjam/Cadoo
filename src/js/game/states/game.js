@@ -17,6 +17,7 @@ module.exports = function (game) {
     var ManCollectibleCollision = require('../collisions/manCollectibleCollision.js');
     var CollectibleFloorCollision = require('../collisions/collectibleFloorCollision.js');
     var ManSidesCollision = require("../collisions/manSidesCollision.js");
+    var BigrockFloorCollision = require("../collisions/bigrockFloorCollision.js");
 
     var gameState = {};
 
@@ -28,7 +29,7 @@ module.exports = function (game) {
 
         var sidetiles = new Sidetile(game, game.width, worldHeight);
         var fallingman = new Fallingman(game, game.width / 2, 0);
-        var bigrock = new Bigrock(game, game.width / 2, -300 );
+        var bigrock = new Bigrock(game, game.width / 2, -500 );
 
         var camera = new Camera(game, fallingman);
         var floor = new Floor(game, game.width, worldHeight);
@@ -40,7 +41,7 @@ module.exports = function (game) {
         ent.register(0, 'floor', floor);
         ent.register(0, 'fallingman', fallingman);
         ent.register(0, 'camera', camera);
-        ent.register(0, 'bigrock', bigrock);
+        ent.register(3, 'bigrock', bigrock);
         ent.register(1, 'bg_music', new BgMusic(game));
         ent.register(2, 'score', scoreDisplay);
         ent.register(0, 'collectibles', collectibles);
@@ -49,6 +50,8 @@ module.exports = function (game) {
         collisionManager.addCollision(new ManSidesCollision(fallingman,sidetiles));
         collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay)));
         collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
+        collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor));
+
     };
 
     gameState.update = function (game) {
