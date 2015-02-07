@@ -1,6 +1,6 @@
 var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
-var worldHeight = 1200;
+var worldHeight = 12000;
 
 module.exports = function (game) {
     var ent = new Ent();
@@ -13,6 +13,7 @@ module.exports = function (game) {
     var BgMusic = require('../entities/music.js');
     
     var ManFloorCollision = require("../collisions/manFloorCollision.js");
+    var ManSidesCollision = require("../collisions/manSidesCollision.js");
 
     var gameState = {};
 
@@ -37,6 +38,7 @@ module.exports = function (game) {
         ent.register(1, 'bg_music', new BgMusic(game));
         
         collisionManager.addCollision(new ManFloorCollision(fallingman,floor));
+        collisionManager.addCollision(new ManSidesCollision(fallingman,sidetiles));
     };
 
     gameState.update = function (game) {
