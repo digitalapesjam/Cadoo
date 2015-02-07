@@ -10,15 +10,20 @@ BigRock.prototype.create= function() {
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.allowGravity = true;
         this.sprite.anchor.setTo(0.5, 0.5);
+
+        var tween = this.game.add.tween(this.sprite);
+
+        var angleThreshold = 0.02;
+        var animationTime = 100;
+        tween
+        .to({'rotation': angleThreshold}, animationTime, Phaser.Easing.Linear.None, true, 0, -1, true)
+        .to({'rotation': -angleThreshold}, animationTime, Phaser.Easing.Linear.None, true, 0, -1, true)
+        .loop();
+        tween.start();
+
 }
 
 BigRock.prototype.update = function() {
-        
-        var _delta = 1
-        if(this.sprite.rotation >= .2 || this.sprite.rotation <= -0.2  )
-            _delta = _delta * -1;
-        console.info(this.sprite.rotation)
-        this.sprite.rotation += (0.02 * _delta);
 }
 
 module.exports = BigRock;
