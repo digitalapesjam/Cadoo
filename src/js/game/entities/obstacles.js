@@ -12,30 +12,44 @@ Obstacles.prototype.create = function () {
     this.ledges = this.game.add.group();
     this.branches_roots = this.game.add.group();
 
+    this.birds.enableBody = true;
+    this.ledges.enableBody = true;
+    this.branches_roots.enableBody = true;
+
     for (var i = 0; i < this.sizey / 400; i++) {
 		var verticalPosition = ((i + 1) * 400) + this.game.rnd.integerInRange(-80, 80);
 
     	switch (this.game.rnd.integerInRange(0, 2)) {
     		case 0:
-    			this.birds.create(this.game.rnd.integerInRange(200, this.sizex - 200), verticalPosition, 'bird');
+    			var sprite = this.birds.create(this.game.rnd.integerInRange(200, this.sizex - 200), verticalPosition, 'bird');
+    			sprite.body.allowGravity = false;
+    			sprite.body.immovable = false;
     			break;
     		case 1:
     			if (this.game.rnd.integer() % 2 === 0) {
-    				this.ledges.create(0, verticalPosition, 'ledge');
-    			} else {
+    				var sprite = this.ledges.create(0, verticalPosition, 'ledge');
+    				sprite.body.allowGravity = false;
+    				sprite.body.immovable = false;
+       			} else {
     				var sprite = this.ledges.create(this.sizex, verticalPosition, 'ledge');
     				sprite.anchor.setTo(0, 0);
     				sprite.scale.x *= -1;
-    			}
+     				sprite.body.allowGravity = false;
+    				sprite.body.immovable = false;
+   				}
     			break;
     		case 2:
     			var type = this.game.rnd.integer() % 2 === 0 ? 'branch' : 'root';
     			if (this.game.rnd.integer() % 2 === 0) {
-    				this.branches_roots.create(0, verticalPosition, type);
-    			} else {
+    				var sprite = this.branches_roots.create(0, verticalPosition, type);
+     				sprite.body.allowGravity = false;
+    				sprite.body.immovable = false;
+   				} else {
     				var sprite = this.branches_roots.create(this.sizex, verticalPosition, type);
     				sprite.anchor.setTo(0, 0);
     				sprite.scale.x *= -1;
+    				sprite.body.allowGravity = false;
+    				sprite.body.immovable = false;
     			}
     			break;
     	}
