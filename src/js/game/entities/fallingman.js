@@ -1,3 +1,6 @@
+var gyro = require('../../lib/gyro.min.js')
+var rotation = null;
+
 var Fallingman = function Fallingman(game, posx, posy) {
     this.game = game;
     this.sprite = null;
@@ -16,15 +19,32 @@ Fallingman.prototype.create= function() {
     
     this.sprite.animations.add('falling');
     this.sprite.animations.play('falling', 15, true);
+    
+    gyro.startTracking(function(o) {
+        rotation = o.gamma;
+    });
 }
 
 Fallingman.prototype.update = function() {
-        if(this.cursors.left.isDown){
-            this.sprite.body.velocity.x = -150;
-        }
-        if(this.cursors.right.isDown){
-            this.sprite.body.velocity.x = +150;
-        }
+         
+    
+        if (rotation != null ) 
+            this.sprite.body.velocity.x = rotation*5;
+        else if(this.cursors.left.isDown)
+            this.sprite.body.velocity.x -= 30;
+        else if(this.cursors.right.isDown)
+            this.sprite.body.velocity.x += 30;
+        else 
+            this.sprite.body.velocity.x *= 0.95;
+    
+    if (this.sprite.body.velocity.x < -200)
+        this.sprite.body.velocity.x  = -200;
+        
+    if (this.sprite.body.velocity.x > 200)
+        this.sprite.body.velocity.x = 200;
+        
+    
+    this.sprite.angle = this.sprite.body.velocity.x/6;
 }
 
 var collided = false;
