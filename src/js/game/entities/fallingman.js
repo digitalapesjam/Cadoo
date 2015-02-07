@@ -1,9 +1,14 @@
+var gyro = require('../../lib/gyro.min.js')
+
+
 var Fallingman = function Fallingman(game, posx, posy) {
     this.game = game;
     this.sprite = null;
     this.posx = posx;
     this.posy = posy;
     this.cursors = game.input.keyboard.createCursorKeys();
+    this.rotation = null;
+    this.falling = true;
 }
 
 Fallingman.prototype.create= function() {
@@ -16,25 +21,34 @@ Fallingman.prototype.create= function() {
     
     this.sprite.animations.add('falling');
     this.sprite.animations.play('falling', 15, true);
+    
+    gyro.startTracking(function(o) {
+        this.rotation = o.gamma;
+    });
 }
 
 Fallingman.prototype.update = function() {
-        if(this.cursors.left.isDown){
-            this.sprite.body.velocity.x = -150;
-        }
-        if(this.cursors.right.isDown){
-            this.sprite.body.velocity.x = +150;
-        }
-}
+         
+    if (this.falling) {
+        if (this.rotation != null ) 
+            this.sprite.body.velocity.x = rotation*5;
+        else if(this.cursors.left.isDown)
+            this.sprite.body.velocity.x -= 30;
+        else if(this.cursors.right.isDown)
+            this.sprite.body.velocity.x += 30;
+        else 
+                this.sprite.body.velocity.x *= 0.95;
 
-var collided = false;
-Fallingman.prototype.collide = function(collider) {
-    if (!collided) {
-        console.info(collider);
-        this.sprite.loadTexture("stickman_hit");
-        this.sprite.animations.add('hitting');
-        this.sprite.animations.play('hitting', 40, false);
-        collided = true;
+        if (this.sprite.body.velocity.x < -200)
+            this.sprite.body.velocity.x  = -200;
+
+        if (this.sprite.body.velocity.x > 200)
+            this.sprite.body.velocity.x = 200;
+
+
+        this.sprite.angle = this.sprite.body.velocity.x/6;
+    } else {
+        this.sprite.body.velocity.x = 0;
     }
 }
 
