@@ -21,9 +21,11 @@ Obstacles.prototype.create = function () {
 
     	switch (this.game.rnd.integerInRange(0, 2)) {
     		case 0:
-    			var sprite = this.birds.create(this.game.rnd.integerInRange(200, this.sizex - 200), verticalPosition, 'bird');
+                var xpos = this.game.rnd.integerInRange(200, this.sizex - 200);
+    			var sprite = this.birds.create(xpos, verticalPosition, 'bird');
     			sprite.body.allowGravity = false;
     			sprite.body.immovable = false;
+                this.game.add.tween(sprite).to({x:xpos+200},1000,Phaser.Easing.Linear.None,true,this.game.rnd.integerInRange(0,500),-1,true);
     			break;
     		case 1:
     			if (this.game.rnd.integer() % 2 === 0) {
@@ -32,8 +34,9 @@ Obstacles.prototype.create = function () {
     				sprite.body.immovable = false;
        			} else {
     				var sprite = this.ledges.create(this.sizex, verticalPosition, 'ledge');
-    				sprite.anchor.setTo(0, 0);
-    				sprite.scale.x *= -1;
+                    sprite.x -= sprite.width / 2;
+    				sprite.anchor.setTo(0.5, 0.5);
+    				sprite.scale.x = -1;
      				sprite.body.allowGravity = false;
     				sprite.body.immovable = false;
    				}
@@ -46,8 +49,9 @@ Obstacles.prototype.create = function () {
     				sprite.body.immovable = false;
    				} else {
     				var sprite = this.branches_roots.create(this.sizex, verticalPosition, type);
-    				sprite.anchor.setTo(0, 0);
-    				sprite.scale.x *= -1;
+                    sprite.x -= sprite.width / 2;
+                    sprite.anchor.setTo(0.5, 0.5);
+                    sprite.scale.x = -1;
     				sprite.body.allowGravity = false;
     				sprite.body.immovable = false;
     			}

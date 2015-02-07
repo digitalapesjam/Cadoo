@@ -21,7 +21,7 @@ Collectibles.prototype.create = function() {
   var taken = {o:true};
   var m = 0;
 
-  var numStars = Math.max(Math.round(this.worldHeight / 200), 10);
+  var numStars = Math.max(Math.round(this.worldHeight / 500), 10);
 
   var heightOffsetGravity = this.worldHeight * 5 / 7;
 
@@ -39,7 +39,9 @@ Collectibles.prototype.create = function() {
       y += s;
       x -= width;
     }
-    var star = this.group.create(offset + x, y, 'star');
+    var star = this.group.create(offset + x, y, 'coin',1);
+    star.smoothed = false;
+    star.scale.set(2,2);
     // if (y < heightOffsetGravity) {
     //   var g = y / heightOffsetGravity;
     //   console.log(g,y,heightOffsetGravity);

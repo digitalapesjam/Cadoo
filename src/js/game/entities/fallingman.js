@@ -11,6 +11,7 @@ var Fallingman = function Fallingman(game, posx, posy, maxVelY) {
     this.falling = true;
     this.bouncing = false;
     this.maxVelY = maxVelY;
+    this.dragged = false;
 }
 
 Fallingman.prototype.create= function() {
@@ -32,31 +33,34 @@ Fallingman.prototype.create= function() {
 Fallingman.prototype.update = function() {
     
     if (!this.bouncing) {
-        if (this.falling) {
+        if (this.falling && !this.dragged) {
             if (this.rotation != null ) 
-                this.sprite.body.velocity.x = this.rotation*5;
+                this.sprite.body.velocity.x = this.rotation*10;
             else if(this.cursors.left.isDown)
-                this.sprite.body.velocity.x -= 30;
+                this.sprite.body.velocity.x -= 50;
             else if(this.cursors.right.isDown)
-                this.sprite.body.velocity.x += 30;
+                this.sprite.body.velocity.x += 50;
             else 
                     this.sprite.body.velocity.x *= 0.95;
 
-            if (this.sprite.body.velocity.x < -200)
-                this.sprite.body.velocity.x  = -200;
+            if (this.sprite.body.velocity.x < -300)
+                this.sprite.body.velocity.x  = -300;
 
-            if (this.sprite.body.velocity.x > 200)
-                this.sprite.body.velocity.x = 200;
+            if (this.sprite.body.velocity.x > 300)
+                this.sprite.body.velocity.x = 300;
         } else {
             this.sprite.body.velocity.x = 0;
         }
     }
 
-    if (this.sprite.body.velocity.y > this.maxVelY) {
+    if (this.sprite.body.velocity.y > this.maxVelY && !this.dragged) {
         this.sprite.body.velocity.y = this.maxVelY;
     }
     
     this.sprite.angle = this.sprite.body.velocity.x/6;
+    
+    if (this.dragged)
+        this.sprite.animations.stop();
 }
 
 module.exports = Fallingman;

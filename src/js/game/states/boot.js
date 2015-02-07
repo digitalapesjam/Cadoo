@@ -16,7 +16,7 @@ module.exports = function(game) {
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.setScreenSize();
-    game.scale.startFullScreen(false);
+    // game.scale.startFullScreen(false);
     
       
     game.state.start('preloader');
