@@ -1,10 +1,6 @@
 var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
-<<<<<<< HEAD
 var worldHeight = 25000;
-=======
-var worldHeight = 12000;
->>>>>>> aa83f858503ce4e50e7eb3a82f50854832c83fd5
 
 module.exports = function (game) {
     var ent = new Ent();
