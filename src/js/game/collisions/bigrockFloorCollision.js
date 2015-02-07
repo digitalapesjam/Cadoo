@@ -5,8 +5,13 @@ var BigrockFloorCollision = function Floor(bigrock,floor) {
 
 BigrockFloorCollision.prototype.checkCollision = function(game) {
     game.physics.arcade.collide(this.bigrock.sprite,this.floor.sprite, function() { 
-    this.bigrock.trembleTween.stop();
-    //this.bigrock.emitter.destroy();
+        console.log('bigrock-floor');
+        this.bigrock.trembleTween.stop();
+        var audio = game.add.audio('bump_rock');
+        audio.onDecoded.add(function(){ audio.play(); });
+        this.collisionManager.removeCollision(this);
+        this.bigrock.sprite.body.allowGravity = false;
+        //this.bigrock.emitter.destroy();
 
         // if (this.man.falling) {
         //     this.man.sprite.loadTexture("stickman_hit");

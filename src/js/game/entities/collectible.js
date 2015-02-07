@@ -21,7 +21,7 @@ Collectibles.prototype.create = function() {
   var taken = {o:true};
   var m = 0;
 
-  var numStars = Math.max(Math.round(this.worldHeight / 50), 10);
+  var numStars = Math.max(Math.round(this.worldHeight / 200), 10);
 
   var heightOffsetGravity = this.worldHeight * 5 / 7;
 
