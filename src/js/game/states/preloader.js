@@ -18,6 +18,8 @@ module.exports = function (game) {
         game.load.image('root', 'images/root.png#grunt-cache-bust');
         game.load.image('ledge', 'images/ledge.png#grunt-cache-bust');
         game.load.image('smoke', 'images/smoke-puff.png');
+        game.load.game.load.spritesheet('blood', 'images/blood.png#grunt-cache-bust', 32, 16);
+        game.load.game.load.spritesheet ('stickman_flat', 'images/flat.png#grunt-cache-bust',32,32);
     };
 
     preloader.create = function () {

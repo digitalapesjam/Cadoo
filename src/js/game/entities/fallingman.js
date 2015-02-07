@@ -25,7 +25,7 @@ Fallingman.prototype.create= function() {
     
     gyro.startTracking(function(o) {
         this.rotation = o.gamma;
-    });
+    }.bind(this));
 }
 
 Fallingman.prototype.update = function() {
@@ -33,7 +33,7 @@ Fallingman.prototype.update = function() {
     if (!this.bouncing) {
         if (this.falling) {
             if (this.rotation != null ) 
-                this.sprite.body.velocity.x = rotation*5;
+                this.sprite.body.velocity.x = this.rotation*5;
             else if(this.cursors.left.isDown)
                 this.sprite.body.velocity.x -= 30;
             else if(this.cursors.right.isDown)
