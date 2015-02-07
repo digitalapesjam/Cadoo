@@ -11,6 +11,10 @@ module.exports = function (game) {
         game.load.image('rightsidetile', 'images/rightside.png#grunt-cache-bust');
         game.load.image('bigrock', 'images/bigrock2.png#grunt-cache-bust');
         game.load.audio('music', 'audio/ScatterNoise1.mp3');
+
+        game.load.image('smoke', 'images/smoke-puff.png');
+
+
     };
 
     preloader.create = function () {
