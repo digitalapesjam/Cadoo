@@ -2,7 +2,6 @@ var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
 var capVelocity = 1500;
 var worldHeight = 60000;
-var worldHeight = 600;
 
 module.exports = function (game) {
     var ent = new Ent();
@@ -22,6 +21,7 @@ module.exports = function (game) {
     var BigrockFloorCollision = require("../collisions/bigrockFloorCollision.js");
     var Obstacles = require('../entities/obstacles.js');
     var ManObstacleCollision = require("../collisions/manObstacleCollision.js");
+    var ManBigRockCollision = require("../collisions/manBigRockCollision.js");
 
     var gameState = {};
 
@@ -60,6 +60,7 @@ module.exports = function (game) {
         collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
         collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor, camera));
         collisionManager.addCollision(new ManObstacleCollision(fallingman, obstacles));
+        collisionManager.addCollision(new ManBigRockCollision(fallingman, bigrock));
     };
 
     gameState.update = function (game) {

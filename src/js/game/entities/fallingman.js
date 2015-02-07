@@ -53,7 +53,7 @@ Fallingman.prototype.update = function() {
         }
     }
 
-    if (this.sprite.body.velocity.y > this.maxVelY) {
+    if (this.sprite.body.velocity.y > this.maxVelY && !this.dragged) {
         this.sprite.body.velocity.y = this.maxVelY;
     }
     

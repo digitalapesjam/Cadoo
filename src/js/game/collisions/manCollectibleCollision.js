@@ -6,7 +6,7 @@ var ManFloorCollision = function ManFloorCollision(man, collectibles, scoreUpdat
 
 ManFloorCollision.prototype.checkCollision = function(game) {
     game.physics.arcade.overlap(this.man.sprite, this.collectibles, function(player, collectible) { 
-        if (this.man.falling) {
+        if (this.man.falling && !this.man.dragged) {
             // console.log('profit!');
             collectible.kill();
             this.scoreUpdate(5);
