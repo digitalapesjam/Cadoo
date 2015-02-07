@@ -29,7 +29,7 @@ module.exports = function (game) {
         game.world.setBounds(0, 0, game.width, worldHeight);
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.physics.arcade.gravity.y = 50;
+        game.physics.arcade.gravity.y = 100;
 
         var sidetiles = new Sidetile(game, game.width, worldHeight);
         var obstacles = new Obstacles(game, game.width, worldHeight);
