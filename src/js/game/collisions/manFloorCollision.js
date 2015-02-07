@@ -19,6 +19,11 @@ ManFloorCollision.prototype.checkCollision = function(game) {
     
             blood.animations.add('spreading');
             blood.animations.play('spreading', 10, false);
+
+            var splat = game.add.audio('splat');
+            splat.onDecoded.add(function () {
+                splat.play();
+            });
         }
     },null,this);
 }
