@@ -30,16 +30,13 @@ BigRock.prototype.create= function() {
         this.emitter.width= 10;
         this.emitter.height= 0;
 
-        // this.emitter.emitX = this.sprite.x;
-        // this.emitter.emitY = this.sprite.y - (this.sprite.height /2 );
-
         this.emitter.makeParticles('smoke');
 
         this.emitter.setXSpeed(0, 0);
         this.emitter.setYSpeed(0, 0);
 
         this.emitter.setRotation(0, 0);
-        this.emitter.setAlpha(0.6, 1, 3000);
+        this.emitter.setAlpha(0.1, 0.2, 3000);
         this.emitter.setScale(0.1, 1, 0.1, 2, 20, Phaser.Easing.Quintic.Out);
         this.emitter.gravity = -200;
 
