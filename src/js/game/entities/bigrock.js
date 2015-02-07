@@ -17,7 +17,7 @@ BigRock.prototype.update = function() {
         var _delta = 1
         if(this.sprite.rotation >= .2 || this.sprite.rotation <= -0.2  )
             _delta = _delta * -1;
-        console.info(this.sprite.rotation)
+        //console.info(this.sprite.rotation)
         this.sprite.rotation += (0.02 * _delta);
 }
 

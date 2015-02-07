@@ -10,6 +10,7 @@ module.exports = function (game) {
     var Camera = require("../entities/camera.js");
     var Floor = require("../entities/floor.js");
     var Sidetile = require("../entities/sidetile.js");
+    var BgMusic = require('../entities/music.js');
 
     var gameState = {};
 
@@ -31,16 +32,15 @@ module.exports = function (game) {
         ent.register(0, 'fallingman', fallingman);
         ent.register(0, 'camera', camera);
         ent.register(0, 'bigrock', bigrock);
+        ent.register(1, 'bg_music', new BgMusic(game));
         
         collisionManager.init();
     };
 
-    gameState.update = function () {
-        ent.update();
+    gameState.update = function (game) {
+        ent.update(game);
         collisionManager.checkCollisions();
     }
-
-
 
     return gameState;
 };
