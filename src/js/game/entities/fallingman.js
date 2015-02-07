@@ -11,6 +11,7 @@ var Fallingman = function Fallingman(game, posx, posy, maxVelY) {
     this.falling = true;
     this.bouncing = false;
     this.maxVelY = maxVelY;
+    this.dragged = false;
 }
 
 Fallingman.prototype.create= function() {
