@@ -24,6 +24,8 @@ ManFloorCollision.prototype.checkCollision = function(game) {
             splat.onDecoded.add(function () {
                 splat.play();
             });
+            
+            game.physics.arcade.gravity.y = 1000000;
         }
     },null,this);
 }
