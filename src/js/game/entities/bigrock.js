@@ -3,6 +3,7 @@ var BigRock = function BigRock(game, posx, posy) {
         this.sprite = null;
         this.posx = posx;
         this.posy = posy;
+        this.rotationDirection = 1;
 }
 
 BigRock.prototype.create= function() {
@@ -15,10 +16,10 @@ BigRock.prototype.create= function() {
 BigRock.prototype.update = function() {
         
         var _delta = 1
-        if(this.sprite.rotation >= .2 || this.sprite.rotation <= -0.2  )
-            _delta = _delta * -1;
-        console.info(this.sprite.rotation)
-        this.sprite.rotation += (0.02 * _delta);
+        if(this.sprite.rotation >= 0.02 || this.sprite.rotation <= -0.02 )
+             this.rotationDirection *= -1;
+
+        this.sprite.rotation += (0.02 * this.rotationDirection);
 }
 
 module.exports = BigRock;
