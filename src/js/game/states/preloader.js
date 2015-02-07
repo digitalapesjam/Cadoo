@@ -5,7 +5,7 @@ module.exports = function(game) {
   preloader.preload = function () {
     game.load.image('logo', 'images/phaser.png#grunt-cache-bust');
     game.load.game.load.spritesheet ('stickman', 'images/stickman.png#grunt-cache-bust',32,32);
-    game.load.image('bigrock', 'images/bigrock.png#grunt-cache-bust');
+    game.load.image('bigrock', 'images/bigrock2.png#grunt-cache-bust');
   };
 
   preloader.create = function () {
