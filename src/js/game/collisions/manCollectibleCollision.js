@@ -10,6 +10,8 @@ ManFloorCollision.prototype.checkCollision = function(game) {
             // console.log('profit!');
             collectible.kill();
             this.scoreUpdate(5);
+            var audio = game.add.audio('shimmer');
+            audio.onDecoded.add(function(){audio.play();});
         }
     }, null, this);
 }
