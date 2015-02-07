@@ -1,4 +1,4 @@
-var ManSidesCollision = function Floor(man,sides) {
+var ManSidesCollision = function ManSidesCollision(man,sides) {
     this.man = man;
     this.sides = sides;
 }

@@ -1,4 +1,4 @@
-var BigrockFloorCollision = function Floor(bigrock,floor) {
+var BigrockFloorCollision = function BigrockFloorCollision(bigrock,floor) {
     this.bigrock = bigrock;
     this.floor = floor;
 }

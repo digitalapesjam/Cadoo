@@ -1,4 +1,4 @@
-var ManFloorCollision = function ManFloorCollision(man,floor) {
+var ManBigRockCollision = function ManBigRockCollision(man,floor) {
     this.man = man;
     this.floor = floor;
 }
@@ -12,7 +12,7 @@ ManFloorCollision.prototype.checkCollision = function(game) {
             this.man.falling = false;
             
             
-            var blood = game.add.sprite(this.man.sprite.position.x+10, this.man.sprite.position.y+12, "blood");
+            var blood = game.add.sprite(this.man.sprite.position.x+10, this.floor.sprite.position.y-this.floor.sprite.height, "blood");
             blood.smoothed = false;
             blood.scale.set(4,4);
             blood.anchor.setTo(0.5, 0);
