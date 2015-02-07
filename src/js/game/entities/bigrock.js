@@ -16,6 +16,7 @@ BigRock.prototype.create= function() {
 BigRock.prototype.update = function() {
         
         var _delta = 1
+        
         if(this.sprite.rotation >= 0.02 || this.sprite.rotation <= -0.02 )
              this.rotationDirection *= -1;
 
