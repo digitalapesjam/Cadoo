@@ -1,7 +1,6 @@
 var Fallingman = function Fallingman(game, posx, posy) {
     this.game = game;
     this.sprite = null;
-    this.anyCustomVariables = 5;
     this.posx = posx;
     this.posy = posy;
     this.cursors = game.input.keyboard.createCursorKeys();
@@ -26,6 +25,17 @@ Fallingman.prototype.update = function() {
         if(this.cursors.right.isDown){
             this.sprite.body.velocity.x = +150;
         }
+}
+
+var collided = false;
+Fallingman.prototype.collide = function(collider) {
+    if (!collided) {
+        console.info(collider);
+        this.sprite.loadTexture("stickman_hit");
+        this.sprite.animations.add('hitting');
+        this.sprite.animations.play('hitting', 40, false);
+        collided = true;
+    }
 }
 
 module.exports = Fallingman;

@@ -1,4 +1,4 @@
-var Floor = function Floor(game, posx, posy) {
+var Floor = function Floor(game,posx,posy) {
     this.game = game;
     this.sprite = null;
     this.posx = posx;
@@ -16,6 +16,9 @@ Floor.prototype.create= function() {
 }
 
 Floor.prototype.update = function() {
+    
 }
+
+Floor.prototype.collide= function(collider) {}
 
 module.exports = Floor;
