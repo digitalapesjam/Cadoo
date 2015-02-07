@@ -15,9 +15,9 @@ module.exports = function(game) {
       game.physics.arcade.gravity.y = 100;
       
     var fallingman = new Fallingman(game, game.width/2,0);
+
     var camera = new Camera(game, fallingman.sprite);
     var floor = new Floor(game, game.width, 12000);
-    //game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
 
     ent.register(0, 'floor', floor);
     ent.register(0, 'fallingman', fallingman);
@@ -28,6 +28,8 @@ module.exports = function(game) {
   gameState.update = function() {
     ent.update();
   }
+
+
 
   return gameState;
 };
