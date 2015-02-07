@@ -23,6 +23,7 @@ module.exports = function (game) {
         game.load.image('smoke', 'images/smoke-puff.png');
         game.load.game.load.spritesheet('blood', 'images/blood.png#grunt-cache-bust', 32, 16);
         game.load.game.load.spritesheet ('stickman_flat', 'images/flat.png#grunt-cache-bust',32,32);
+        game.load.game.load.spritesheet ('coin', 'images/coin.png#grunt-cache-bust',32,21);
     };
 
     preloader.create = function () {
