@@ -40,6 +40,7 @@ Collectibles.prototype.create = function() {
     console.log('create star at ', offset + x, y, 'gen', m, 'max', max);
     var star = this.group.create(offset + x, y, 'star');
     star.body.gravity.y = -30;
+    star.body.bounce.y = 0.2;
   }
 };
 

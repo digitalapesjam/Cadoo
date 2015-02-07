@@ -15,6 +15,7 @@ module.exports = function (game) {
     var Collectibles = require('../entities/collectible.js');
     var ScoreDisplay = require('../score.js');
     var ManCollectibleCollision = require('../collisions/manCollectibleCollision.js');
+    var CollectibleFloorCollision = require('../collisions/collectibleFloorCollision.js');
 
     var gameState = {};
 
@@ -44,7 +45,8 @@ module.exports = function (game) {
         ent.register(0, 'collectibles', collectibles);
         
         collisionManager.addCollision(new ManFloorCollision(fallingman, floor));
-        collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay  )));
+        collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay)));
+        collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
     };
 
     gameState.update = function (game) {
