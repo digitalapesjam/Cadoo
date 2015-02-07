@@ -1,6 +1,7 @@
 var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
 var worldHeight = 10000;
+var worldHeight = 12000;
 
 module.exports = function (game) {
     var ent = new Ent();
@@ -17,6 +18,8 @@ module.exports = function (game) {
     var ManCollectibleCollision = require('../collisions/manCollectibleCollision.js');
     var CollectibleFloorCollision = require('../collisions/collectibleFloorCollision.js');
     var ManSidesCollision = require("../collisions/manSidesCollision.js");
+    var Obstacles = require('../entities/obstacles.js');
+    var ManObstacleCollision = require("../collisions/manObstacleCollision.js");
 
     var gameState = {};
 
@@ -27,6 +30,7 @@ module.exports = function (game) {
         game.physics.arcade.gravity.y = 50;
 
         var sidetiles = new Sidetile(game, game.width, worldHeight);
+        var obstacles = new Obstacles(game, game.width, worldHeight);
         var fallingman = new Fallingman(game, game.width / 2, 0);
         var bigrock = new Bigrock(game, game.width / 2, -300 );
 
@@ -39,6 +43,7 @@ module.exports = function (game) {
         var collectibles = new Collectibles(game, worldHeight);
 
         ent.register(0, 'sidetiles', sidetiles);
+        ent.register(0, 'obstacles', obstacles);
         ent.register(0, 'floor', floor);
         ent.register(0, 'fallingman', fallingman);
         ent.register(0, 'camera', camera);
@@ -51,6 +56,7 @@ module.exports = function (game) {
         collisionManager.addCollision(new ManSidesCollision(fallingman, sidetiles));
         collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay)));
         collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
+        collisionManager.addCollision(new ManObstacleCollision(fallingman, obstacles));
     };
 
     gameState.update = function (game) {
