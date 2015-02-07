@@ -1,37 +1,46 @@
 var Ent = require('../ent.js');
+var CollisionaManager = require("../collisionManager.js");
+var worldHeight = 12000;
 
-module.exports = function(game) {
-  var ent = new Ent();
-  var Fallingman = require("../entities/fallingman.js");
-  var Camera = require("../entities/camera.js");
-  var Bigrock = require("../entities/bigrock.js");
-    
-  var gameState = {};
+module.exports = function (game) {
+    var ent = new Ent();
+    var collisionManager = new CollisionaManager(game,ent);    
+    var Fallingman = require("../entities/fallingman.js");
+    var Bigrock = require("../entities/bigrock.js");
+    var Camera = require("../entities/camera.js");
+    var Floor = require("../entities/floor.js");
+    var Sidetile = require("../entities/sidetile.js");
 
-  gameState.create = function () {
-    game.world.setBounds(0, 0, game.width, 12000);
-      
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y = 100;
-    
-    var fallingmanX = game.width/2;
-    var fallingmanY = 0
-      
-    var fallingman = new Fallingman(game, fallingmanX, fallingmanY);
-    var bigrock = new Bigrock(game, fallingmanX, fallingmanY - 300 );
-    var camera = new Camera(game, fallingman); 
+    var gameState = {};
 
-    ent.register(0, 'fallingman', fallingman);
-    ent.register(0, 'camera', camera);
-    ent.register(0, 'bigrock', bigrock);
+    gameState.create = function () {
+        game.world.setBounds(0, 0, game.width, worldHeight);
 
-  };
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.arcade.gravity.y = 100;
 
-  gameState.update = function() {
-    ent.update();
-  }
+        var sidetiles = new Sidetile(game, game.width, worldHeight);
+        var fallingman = new Fallingman(game, game.width / 2, 0);
+        var bigrock = new Bigrock(game, game.width / 2, -300 );
+
+        var camera = new Camera(game, fallingman);
+        var floor = new Floor(game, game.width, worldHeight);
+
+        ent.register(0, 'sidetiles', sidetiles);
+        ent.register(0, 'floor', floor);
+        ent.register(0, 'fallingman', fallingman);
+        ent.register(0, 'camera', camera);
+        ent.register(0, 'bigrock', bigrock);
+        
+        collisionManager.init();
+    };
+
+    gameState.update = function () {
+        ent.update();
+        collisionManager.checkCollisions();
+    }
 
 
 
-  return gameState;
+    return gameState;
 };

@@ -10,4 +10,6 @@ Camera.prototype.create= function() {
 
 Camera.prototype.update= function() {}
 
+Camera.prototype.collide = function(collider) {}
+
 module.exports = Camera;

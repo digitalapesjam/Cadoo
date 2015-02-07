@@ -27,4 +27,8 @@ Ent.prototype.remove = function(layer, id) {
   delete(this.layers[layer][id])
 };
 
+Ent.prototype.get = function(layer, id) {
+  return this.layers[layer][id];
+};
+
 module.exports = Ent;
