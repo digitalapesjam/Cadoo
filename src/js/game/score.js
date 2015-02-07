@@ -11,7 +11,7 @@ ScoreDisplay.prototype.create = function() {
 ScoreDisplay.prototype.updateScore = function(scoreMod) {
   this.score += scoreMod;
   this.text.text = 'Score: ' + this.score;
-  console.log('new score', this.score);
+  //console.log('new score', this.score);
 };
 
 ScoreDisplay.prototype.update = function() {
