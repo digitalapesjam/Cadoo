@@ -34,8 +34,9 @@ Obstacles.prototype.create = function () {
     				sprite.body.immovable = false;
        			} else {
     				var sprite = this.ledges.create(this.sizex, verticalPosition, 'ledge');
-    				sprite.anchor.setTo(0, 0);
-    				sprite.scale.x *= -1;
+                    sprite.x -= sprite.width / 2;
+    				sprite.anchor.setTo(0.5, 0.5);
+    				sprite.scale.x = -1;
      				sprite.body.allowGravity = false;
     				sprite.body.immovable = false;
    				}
@@ -48,8 +49,9 @@ Obstacles.prototype.create = function () {
     				sprite.body.immovable = false;
    				} else {
     				var sprite = this.branches_roots.create(this.sizex, verticalPosition, type);
-    				sprite.anchor.setTo(0, 0);
-    				sprite.scale.x *= -1;
+                    sprite.x -= sprite.width / 2;
+                    sprite.anchor.setTo(0.5, 0.5);
+                    sprite.scale.x = -1;
     				sprite.body.allowGravity = false;
     				sprite.body.immovable = false;
     			}
