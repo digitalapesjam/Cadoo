@@ -12,7 +12,7 @@ ManFloorCollision.prototype.checkCollision = function(game) {
             this.man.falling = false;
             
             
-            var blood = game.add.sprite(this.man.sprite.position.x+10, this.man.sprite.position.y+6, "blood");
+            var blood = game.add.sprite(this.man.sprite.position.x+10, this.man.sprite.position.y+12, "blood");
             blood.smoothed = false;
             blood.scale.set(4,4);
             blood.anchor.setTo(0.5, 0);
