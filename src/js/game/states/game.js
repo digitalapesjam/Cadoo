@@ -1,5 +1,6 @@
 var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
+var capVelocity = 1500;
 var worldHeight = 60000;
 
 module.exports = function (game) {
@@ -31,8 +32,8 @@ module.exports = function (game) {
 
         var sidetiles = new Sidetile(game, game.width, worldHeight);
         var obstacles = new Obstacles(game, game.width, worldHeight);
-        var fallingman = new Fallingman(game, game.width / 2, 0);
-        var bigrock = new Bigrock(game, game.width / 2, -500 );
+        var fallingman = new Fallingman(game, game.width / 2, 0, capVelocity);
+        var bigrock = new Bigrock(game, game.width / 2, -500, capVelocity);
 
         var camera = new Camera(game, fallingman);
         var floor = new Floor(game, game.width, worldHeight);

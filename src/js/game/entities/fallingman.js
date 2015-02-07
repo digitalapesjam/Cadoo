@@ -1,7 +1,7 @@
 var gyro = require('../../lib/gyro.min.js')
 
 
-var Fallingman = function Fallingman(game, posx, posy) {
+var Fallingman = function Fallingman(game, posx, posy, maxVelY) {
     this.game = game;
     this.sprite = null;
     this.posx = posx;
@@ -10,6 +10,7 @@ var Fallingman = function Fallingman(game, posx, posy) {
     this.rotation = null;
     this.falling = true;
     this.bouncing = false;
+    this.maxVelY = maxVelY;
 }
 
 Fallingman.prototype.create= function() {
@@ -49,6 +50,10 @@ Fallingman.prototype.update = function() {
         } else {
             this.sprite.body.velocity.x = 0;
         }
+    }
+
+    if (this.sprite.body.velocity.y > this.maxVelY) {
+        this.sprite.body.velocity.y = this.maxVelY;
     }
     
     this.sprite.angle = this.sprite.body.velocity.x/6;

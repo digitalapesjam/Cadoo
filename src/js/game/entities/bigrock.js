@@ -1,4 +1,4 @@
-var BigRock = function BigRock(game, posx, posy) {
+var BigRock = function BigRock(game, posx, posy, maxVelY) {
         this.game = game;
         this.sprite = null;
         this.posx = posx;
@@ -6,6 +6,7 @@ var BigRock = function BigRock(game, posx, posy) {
         this.rotationDirection = 1;
         this.emitter = null;
         this.trembleTween = null;
+        this.maxVelY = maxVelY;
 }
 
 BigRock.prototype.create= function() {
@@ -58,7 +59,9 @@ BigRock.prototype.update = function() {
     this.emitter.emitX = this.sprite.x;
     this.emitter.emitY = this.sprite.y+300;
 
-
+    if (this.sprite.body.velocity.y > this.maxVelY) {
+        this.sprite.body.velocity.y = this.maxVelY;
+    }
 }
 
 module.exports = BigRock;
