@@ -3,6 +3,7 @@ var BigRock = function BigRock(game, posx, posy) {
         this.sprite = null;
         this.posx = posx;
         this.posy = posy;
+        this.rotationDirection = 1;
 }
 
 BigRock.prototype.create= function() {

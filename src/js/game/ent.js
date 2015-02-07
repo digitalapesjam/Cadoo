@@ -2,13 +2,13 @@ var Ent = function() {
   this.layers = [];
 };
 
-Ent.prototype.update = function() {
+Ent.prototype.update = function(game) {
   for (var l in this.layers) {
     if (false === !!this.layers[l]) {continue;}
     var ents = this.layers[l];
     for (var k in ents) {
       if (ents.hasOwnProperty(k)) {
-        ents[k].update();
+        ents[k].update(game);
       }
     }
   }
