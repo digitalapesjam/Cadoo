@@ -30,6 +30,7 @@ BigRock.prototype.create= function() {
         .to({'rotation': angleThreshold}, animationTime, Phaser.Easing.Linear.None, true, 0, -1, true)
         .to({'rotation': -angleThreshold}, animationTime, Phaser.Easing.Linear.None, true, 0, -1, true)
         .loop();
+        
         this.trembleTween.start();
 
         

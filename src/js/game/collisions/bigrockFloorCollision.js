@@ -14,7 +14,9 @@ BigrockFloorCollision.prototype.checkCollision = function(game) {
         this.collisionManager.removeCollision(this);
         this.bigrock.sprite.body.allowGravity = false;
         this.bigrock.crack();
-        //this.camera.shake()
+        this.camera.shake();
+        //this.camera.trembleTween.start()
+        //this.camera.trembleTween.start()
         //this.bigrock.emitter.destroy();
 
     },null,this);
