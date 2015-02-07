@@ -1,3 +1,5 @@
+var Phaser = require('Phaser');
+
 var BgMusic = function(game, steps, duration, easeFn) {
   this.duration = duration || 25000;
   this.steps = steps || 100;
@@ -11,21 +13,13 @@ var BgMusic = function(game, steps, duration, easeFn) {
 BgMusic.prototype.create = function() {
   this.music = this.game.add.audio('music');
   var t = this;
+  this.music.onDecoded.add(function(){
+    t.music.volume = 0;
+    t.music.play();
+    t.game.add.tween(t.music).to({'volume': 1}, t.duration, Phaser.Easing.Quintic.In, true, false);
+  });
 };
 
-BgMusic.prototype.update = function(game) {
-  if (this._step >= this.duration || !this.music.isDecoded) {return;}
-  if (!this.music.isPlaying) {
-    this.music.volume = 0;
-    this.music.play();
-  }
-
-  this._t += game.time.physicsElapsed;
-  while (this._t >= this._intv) {
-    this._step += 1;
-    this.music.volume = this.easeFn(this._step/this.steps);
-    this._t -= this._intv;
-  }
-};
+BgMusic.prototype.update = function(game) {};
 
 module.exports = BgMusic;
