@@ -1,6 +1,8 @@
-var BigrockFloorCollision = function BigrockFloorCollision(bigrock,floor) {
+
+var BigrockFloorCollision = function Floor(bigrock,floor, camera) {
     this.bigrock = bigrock;
     this.floor = floor;
+    this.camera = camera;
 }
 
 BigrockFloorCollision.prototype.checkCollision = function(game) {
@@ -12,6 +14,7 @@ BigrockFloorCollision.prototype.checkCollision = function(game) {
         this.collisionManager.removeCollision(this);
         this.bigrock.sprite.body.allowGravity = false;
         this.bigrock.crack();
+        //this.camera.shake()
         //this.bigrock.emitter.destroy();
 
     },null,this);

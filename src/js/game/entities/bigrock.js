@@ -14,10 +14,7 @@ var BigRock = function BigRock(game, posx, posy, maxVelY) {
 
 BigRock.prototype.create= function() {
         this.sprite = this.game.add.sprite(this.posx, this.posy, 'bigrock');
-        this.crack = function(){
-            this.sprite.animations.add('crack');
-            this.sprite.animations.play('crack', 10, false);
-        }
+        
 
         //this.sprite.width= 600;
         this.game.physics.arcade.enable(this.sprite);
@@ -50,19 +47,9 @@ BigRock.prototype.create= function() {
         this.emitter.setScale(0.1, 0.1, 0.2, 0.2, 2000, Phaser.Easing.Quintic.Out);
         this.emitter.gravity = -100;
 
-
-        
-
         //this.emitter.start(false, 600, 10);
-
-        
-
         //this.game.add.tween(this.emitter).to( { emitX: 10 }, 1000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
         //this.game.add.tween(this.emitter).to( { emitY: 200 }, 4000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
-
-
-
-
 
 }
 
@@ -73,6 +60,12 @@ BigRock.prototype.update = function() {
     if (this.sprite.body.velocity.y > this.maxVelY) {
         this.sprite.body.velocity.y = this.maxVelY;
     }
+}
+
+
+BigRock.prototype.crack = function(){
+    this.sprite.animations.add('crack');
+    this.sprite.animations.play('crack', 10, false);
 }
 
 module.exports = BigRock;
