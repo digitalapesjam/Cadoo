@@ -16,6 +16,7 @@ module.exports = function (game) {
         game.load.image('branch', 'images/branch.png#grunt-cache-bust');
         game.load.image('root', 'images/root.png#grunt-cache-bust');
         game.load.image('ledge', 'images/ledge.png#grunt-cache-bust');
+        game.load.game.load.spritesheet('blood', 'images/blood.png#grunt-cache-bust', 32, 16);
     };
 
     preloader.create = function () {
