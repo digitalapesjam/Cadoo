@@ -11,14 +11,9 @@ BigrockFloorCollision.prototype.checkCollision = function(game) {
         audio.onDecoded.add(function(){ audio.play(); });
         this.collisionManager.removeCollision(this);
         this.bigrock.sprite.body.allowGravity = false;
+        this.bigrock.crack();
         //this.bigrock.emitter.destroy();
 
-        // if (this.man.falling) {
-        //     this.man.sprite.loadTexture("stickman_hit");
-        //     this.man.sprite.animations.add('hitting');
-        //     this.man.sprite.animations.play('hitting', 40, false);
-        //     this.man.falling = false;
-        // }
     },null,this);
 }
 
