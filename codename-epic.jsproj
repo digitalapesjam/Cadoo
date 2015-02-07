@@ -106,6 +106,9 @@
     <Content Include="package.json" />
     <Content Include="readme.md" />
     <Content Include="src\audio\beep.mp3" />
+    <Content Include="src\audio\ScatterNoise1.mp3" />
+    <Content Include="src\images\bigrock.png" />
+    <Content Include="src\images\bigrock2.png" />
     <Content Include="src\images\floor.png" />
     <Content Include="src\images\hitting.png" />
     <Content Include="src\images\leftside.png" />
@@ -114,10 +117,13 @@
     <Content Include="src\images\rightside.png" />
     <Content Include="src\images\stickman.png" />
     <Content Include="src\js\game\app.js" />
+    <Content Include="src\js\game\collisionManager.js" />
     <Content Include="src\js\game\ent.js" />
+    <Content Include="src\js\game\entities\bigrock.js" />
     <Content Include="src\js\game\entities\camera.js" />
     <Content Include="src\js\game\entities\fallingman.js" />
     <Content Include="src\js\game\entities\floor.js" />
+    <Content Include="src\js\game\entities\music.js" />
     <Content Include="src\js\game\entities\sidetile.js" />
     <Content Include="src\js\game\properties.js" />
     <Content Include="src\js\game\states\boot.js" />
