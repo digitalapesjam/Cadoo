@@ -13,6 +13,7 @@ module.exports = function (game) {
     var BgMusic = require('../entities/music.js');
     
     var ManFloorCollision = require("../collisions/manFloorCollision.js");
+    var BigrockFloorCollision = require("../collisions/bigrockFloorCollision.js");
 
     var gameState = {};
 
@@ -37,6 +38,7 @@ module.exports = function (game) {
         ent.register(1, 'bg_music', new BgMusic(game));
         
         collisionManager.addCollision(new ManFloorCollision(fallingman,floor));
+        collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor));
     };
 
     gameState.update = function (game) {
