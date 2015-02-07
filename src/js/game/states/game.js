@@ -4,6 +4,7 @@ module.exports = function(game) {
   var ent = new Ent();
   var Fallingman = require("../entities/fallingman.js");
   var Camera = require("../entities/camera.js");
+    var Floor = require("../entities/floor.js");
     
   var gameState = {};
 
@@ -14,9 +15,11 @@ module.exports = function(game) {
       game.physics.arcade.gravity.y = 100;
       
     var fallingman = new Fallingman(game, game.width/2,0);
-    var camera = new Camera(game, fallingman.sprite);  
+    var camera = new Camera(game, fallingman.sprite);
+    var floor = new Floor(game, game.width, 12000);
     //game.camera.follow(logo.sprite,Phaser.Camera.FOLLOW_TOPDOWN);
 
+    ent.register(0, 'floor', floor);
     ent.register(0, 'fallingman', fallingman);
     ent.register(0, 'camera', camera);
 
