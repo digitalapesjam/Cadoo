@@ -19,7 +19,7 @@ BigRock.prototype.create= function() {
         //this.sprite.width= 600;
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.allowGravity = true;
-        this.sprite.body.gravity.y = -3;
+        this.sprite.body.gravity.y = -1;
         this.sprite.anchor.setTo(0.5, 0.5);
 
         //bigroke rotation

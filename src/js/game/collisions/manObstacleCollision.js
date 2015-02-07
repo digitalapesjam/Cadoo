@@ -10,12 +10,14 @@ var ManObstacleCollision = function ManObstacleCollision(man, obstacles) {
     this.maxLedgesHit = 5;
 }
 
+var sd = 0.05;
+
 ManObstacleCollision.prototype.checkCollision = function(game) {
     game.physics.arcade.overlap(this.man.sprite, this.obstacles.ledges, function(fallingman, ledge) {
         if (this.man.falling && !this.man.dragged) {
             if (this.lastLedgeHit !== ledge) {
                 this.lastLedgeHit = ledge;
-                this.slowDown(0.05);
+                this.slowDown(2*sd);
                 this.ledgesHit += 1;
                 var name = 'impact' + Math.round(Math.random() * 2);
                 this.playAudio(name, game);
@@ -41,10 +43,9 @@ ManObstacleCollision.prototype.checkCollision = function(game) {
     }, null, this);
     game.physics.arcade.overlap(this.man.sprite, this.obstacles.birds, function(fallingman, bird) {
         if (this.man.falling && !this.man.dragged) {
-            // some pixels-feathers
             if (this.lastBirdHit !== bird) {
                 this.lastBirdHit = bird;
-                this.slowDown(0.01);
+                this.slowDown(sd);
                 this.playAudio('birdhit', game);
                 bird.kill();
                 var emitter = game.add.emitter(bird.x, bird.y + 100, 5);
@@ -59,7 +60,7 @@ ManObstacleCollision.prototype.checkCollision = function(game) {
         if (this.man.falling && !this.man.dragged) {
             if (this.lastBranchHit !== branch) {
                 this.lastBranchHit = branch;
-                this.slowDown(0.01);
+                this.slowDown(sd);
                 this.playAudio('branchhit', game);
             }
         }
