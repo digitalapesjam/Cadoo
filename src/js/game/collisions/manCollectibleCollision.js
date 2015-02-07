@@ -11,7 +11,7 @@ ManFloorCollision.prototype.checkCollision = function(game) {
             collectible.kill();
             this.scoreUpdate(5);
             var audio = game.add.audio('shimmer');
-            audio.onDecoded.add(function(){audio.volume = 0.5; audio.play();});
+            audio.onDecoded.add(function(){audio.play('', 0, 0.2);});
         }
     }, null, this);
 }
