@@ -1,35 +1,37 @@
 var Ent = require('../ent.js');
 
-module.exports = function(game) {
-  var ent = new Ent();
-  var Fallingman = require("../entities/fallingman.js");
-  var Camera = require("../entities/camera.js");
+module.exports = function (game) {
+    var ent = new Ent();
+    var Fallingman = require("../entities/fallingman.js");
+    var Camera = require("../entities/camera.js");
     var Floor = require("../entities/floor.js");
-    
-  var gameState = {};
+    var Sidetile = require("../entities/sidetile.js");
 
-  gameState.create = function () {
-    game.world.setBounds(0, 0, game.width, 12000);
-      
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-      game.physics.arcade.gravity.y = 100;
-      
-    var fallingman = new Fallingman(game, game.width/2,0);
+    var gameState = {};
 
-    var camera = new Camera(game, fallingman.sprite);
-    var floor = new Floor(game, game.width, 12000);
+    gameState.create = function () {
+        game.world.setBounds(0, 0, game.width, 12000);
 
-    ent.register(0, 'floor', floor);
-    ent.register(0, 'fallingman', fallingman);
-    ent.register(0, 'camera', camera);
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.arcade.gravity.y = 100;
 
-  };
+        var sidetiles = new Sidetile(game, game.width, 12000);
+        var fallingman = new Fallingman(game, game.width / 2, 0);
 
-  gameState.update = function() {
-    ent.update();
-  }
+        var camera = new Camera(game, fallingman);
+        var floor = new Floor(game, game.width, 12000);
+
+        ent.register(0, 'sidetiles', sidetiles);
+        ent.register(0, 'floor', floor);
+        ent.register(0, 'fallingman', fallingman);
+        ent.register(0, 'camera', camera);
+    };
+
+    gameState.update = function () {
+        ent.update();
+    }
 
 
 
-  return gameState;
+    return gameState;
 };
