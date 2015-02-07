@@ -33,7 +33,7 @@ Fallingman.prototype.create= function() {
 Fallingman.prototype.update = function() {
     
     if (!this.bouncing) {
-        if (this.falling) {
+        if (this.falling && !this.dragged) {
             if (this.rotation != null ) 
                 this.sprite.body.velocity.x = this.rotation*5;
             else if(this.cursors.left.isDown)
@@ -58,6 +58,9 @@ Fallingman.prototype.update = function() {
     }
     
     this.sprite.angle = this.sprite.body.velocity.x/6;
+    
+    if (this.dragged)
+        this.sprite.animations.stop();
 }
 
 module.exports = Fallingman;
