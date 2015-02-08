@@ -4,6 +4,18 @@ var CollisionaManager = require("../collisionManager.js");
 var capVelocity = 800;
 var worldHeight = 30000;
 
+
+var setBG = function (game) {
+        game.stage.backgroundColor = "#ffffff"
+        var drawnObject;
+        var bmd = game.add.bitmapData(game.width, worldHeight);
+        bmd.ctx.beginPath();
+        bmd.ctx.rect(0, 0, game.width, worldHeight);
+        bmd.ctx.fillStyle = '#000000';
+        bmd.ctx.fill();
+        drawnObject = game.add.sprite(0, 0, bmd);
+}
+
 module.exports = function (game) {
     var ent = new Ent();
     var collisionManager = new CollisionaManager(game,ent);    
@@ -23,11 +35,13 @@ module.exports = function (game) {
     var Obstacles = require('../entities/obstacles.js');
     var ManObstacleCollision = require("../collisions/manObstacleCollision.js");
     var ManBigRockCollision = require("../collisions/manBigRockCollision.js");
+    var BigRockObstacleCollision = require("../collisions/bigRockObstacleCollision.js");
 
     var gameState = {};
 
-    gameState.create = function () {
+    gameState.create = function () {        
         game.world.setBounds(0, 0, game.width, worldHeight);
+        setBG(game);
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.physics.arcade.gravity.y = 100;
@@ -64,6 +78,7 @@ module.exports = function (game) {
         collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor, camera));
         collisionManager.addCollision(new ManObstacleCollision(fallingman, obstacles));
         collisionManager.addCollision(new ManBigRockCollision(fallingman, bigrock));
+        collisionManager.addCollision(new BigRockObstacleCollision(bigrock, obstacles));
     };
 
     gameState.update = function (game) {

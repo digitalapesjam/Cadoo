@@ -10,7 +10,7 @@ var ManObstacleCollision = function ManObstacleCollision(man, obstacles) {
     this.maxLedgesHit = 5;
 }
 
-var sd = 0.05;
+var sd = 0.1;
 
 ManObstacleCollision.prototype.checkCollision = function(game) {
     game.physics.arcade.overlap(this.man.sprite, this.obstacles.ledges, function(fallingman, ledge) {
