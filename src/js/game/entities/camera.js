@@ -11,31 +11,25 @@ var Camera = function Camera(game, toFollow, camaraStyle) {
 
 Camera.prototype.create= function() {
     this.game.camera.follow(this.toFollow.sprite, this.camaraStyle);
-	//this.game.debug.cameraInfo(this.game.camera, 32, 32);
+	
 	var _worldRectangle = this.game.world.bounds;
 
-	this.game.camera.bounds = new Phaser.Rectangle(-10 ,0,_worldRectangle.width+(this.trembleOffset*2), _worldRectangle.height)	
+	this.game.camera.bounds = new Phaser.Rectangle(-this.trembleOffset ,0,_worldRectangle.width+(this.trembleOffset*2), _worldRectangle.height)	
+	//this.game.camera.bounds = new Phaser.Rectangle(-10 ,-10,1000, _worldRectangle.height)	
 
     this.trembleTween = this.game.add.tween(this.game.camera);
-    var offsetThreshold = 5;
+    var offsetThreshold = 1;
     var animationTime = 40;
     this.trembleTween
-    .to({'x': offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
+    .to({'x': +offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .to({'x': -offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .loop()
-
-    this.shakeTween = this.game.add.tween(this.game.camera);
-    var trembleTweenOffsetThreshold = 25;
-    var animationTime = 40;
-    this.shakeTween
-    .to({'y': trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
-    .to({'y': -trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
-    .repeat(21)
-    
+    //this.trembleTween.start()
+     
 }
 
 Camera.prototype.update= function() {
-
+	this.game.debug.cameraInfo(this.game.camera, 32, 32);
 }
 
 Camera.prototype.shake = function() {
@@ -43,7 +37,17 @@ Camera.prototype.shake = function() {
 	var _resetCamera = function _resetCamera(){
 		this.game.camera.y = _cameraY;
 	}
-	this.game.camera.unfollow();
+	console.log('shake');
+	this.shakeTween = this.game.add.tween(this.game.camera);
+    var trembleTweenOffsetThreshold = 20;
+    var animationTime = 40;
+    this.shakeTween
+    .to({'y': _cameraY-trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
+    .to({'y': _cameraY+trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
+    .repeat(10)  
+	 
+    this.game.camera.unfollow();
+
 	this.shakeTween.onComplete.add(_resetCamera, this);
     this.shakeTween.start();	
 
