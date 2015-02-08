@@ -12,6 +12,7 @@ var Fallingman = function Fallingman(game, posx, posy, maxVelY) {
     this.bouncing = false;
     this.maxVelY = maxVelY;
     this.dragged = false;
+    this.playing = false;
 }
 
 Fallingman.prototype.create= function() {
@@ -24,7 +25,7 @@ Fallingman.prototype.create= function() {
     
     this.sprite.animations.add('falling');
     this.sprite.animations.play('falling', 15, true);
-    
+
     gyro.startTracking(function(o) {
         this.rotation = o.gamma;
     }.bind(this));
@@ -38,11 +39,13 @@ Fallingman.prototype.update = function() {
         if (this.falling && !this.dragged) {
             if (this.rotation != null ) 
                 this.sprite.body.velocity.x = this.rotation*10;
-            else if(this.cursors.left.isDown)
+            else if(this.cursors.left.isDown) {
+                this.maybeAudio();
                 this.sprite.body.velocity.x -= incr;
-            else if(this.cursors.right.isDown)
+            } else if(this.cursors.right.isDown) {
+                this.maybeAudio();
                 this.sprite.body.velocity.x += incr;
-            else 
+            } else 
                     this.sprite.body.velocity.x *= 0.95;
 
             if (this.sprite.body.velocity.x < -maxVelX)
@@ -64,5 +67,15 @@ Fallingman.prototype.update = function() {
     if (this.dragged)
         this.sprite.animations.stop();
 }
+
+Fallingman.prototype.maybeAudio = function() {
+    if (this.playing) {return;}
+    var game = this.game;
+    this.playing = true;
+    var swosh = 'swosh' + game.rnd.integer() % 8;
+    var audio = game.add.audio(swosh);
+    audio.onDecoded.add(function() {audio.play()});
+    audio.onStop.add((function() {this.playing = false;}).bind(this));
+};
 
 module.exports = Fallingman;

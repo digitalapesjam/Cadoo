@@ -30,6 +30,12 @@ module.exports = function (game) {
         game.load.game.load.spritesheet('blood', 'images/blood.png#grunt-cache-bust', 32, 16);
         game.load.game.load.spritesheet ('stickman_flat', 'images/flat.png#grunt-cache-bust',32,32);
         game.load.game.load.spritesheet ('coin', 'images/coin.png#grunt-cache-bust',32,21);
+
+        ['01', '02', '11', '14', '15', '16', '17', '18'].forEach(function(el, id) {
+            var swosh = 'swosh'+id;
+            var fname = 'audio/swosh-' + el + '.mp3';
+            game.load.audio(swosh, fname);
+        });
     };
 
     preloader.create = function () {
