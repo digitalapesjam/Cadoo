@@ -40,10 +40,14 @@ module.exports = function (game) {
             hideAll();
 
             Obj1Text.y =  game.world.centerY/2 - 100;
-            Obj2Text.y =  game.world.centerY/2 + 100;           
+            
 
             _showText(Obj1Text, delay + 0);
-            _showText(Obj2Text, delay + 1000);
+
+            if(typeof(Obj2Text) !== 'undefined' ){
+                Obj2Text.y =  game.world.centerY/2 + 100;           
+                _showText(Obj2Text, delay + 1000);
+            }
 
         }
 
@@ -56,7 +60,7 @@ module.exports = function (game) {
         var startGameText = "Press here to start game";
         var creditsText = "Credits";
 
-        var style = { font: "35px Arial", fill: "#ff0044", align: "center" };
+        var style = { font: "35px Arial", fill: "#ffffff", align: "center" };
 
 
         var text1 = 'Sometimes you dream\n of falling...';
@@ -67,15 +71,18 @@ module.exports = function (game) {
         
         var continueText = 'Click to continue';
 
-        var text1Area = game.add.text(game.world.centerX/2, 0, text1, style);
-        var text2Area = game.add.text(game.world.centerX/2, 0, text2, style);
-        var continueArea = game.add.text(game.world.centerX/2, 0, continueText, style);
+        var initYOffset = -5000;
+        var centeredTextX = game.world.centerX/2 - 20
 
-        var startGameButton = game.add.text(game.world.centerX/2, 0, startGameText, style);
-        var creditsButton = game.add.text(game.world.centerX/2, 0, creditsText, style);
+        var text1Area = game.add.text(centeredTextX, initYOffset, text1, style);
+        var text2Area = game.add.text(centeredTextX, initYOffset, text2, style);
+        var continueArea = game.add.text(centeredTextX, initYOffset, continueText, style);
 
-        var text3Area = game.add.text(game.world.centerX/2, 0, text3, style);
-        var text4Area = game.add.text(game.world.centerX/2, 0, text4, style);
+        var startGameButton = game.add.text(centeredTextX, initYOffset, startGameText, style);
+        var creditsButton = game.add.text(centeredTextX, initYOffset, creditsText, style);
+
+        var text3Area = game.add.text(centeredTextX, initYOffset, text3, style);
+        var text4Area = game.add.text(centeredTextX, initYOffset, text4, style);
 
         text1Area.inputEnabled = true;
         text2Area.inputEnabled = true;
@@ -89,14 +96,14 @@ module.exports = function (game) {
             text3Area.alpha = 0;
             text4Area.alpha = 0;
             startGameButton.alpha = 0;
-            creditsButton.alpha = 0;
+            //creditsButton.alpha = 0;
             continueArea.alpha = 0;
         }
 
 
         
         var from1to2 = function(){
-            showScreen(startGameButton, creditsButton, 0, hideAll); 
+            showScreen(startGameButton, undefined, 0, hideAll); 
         } 
 
         var from2to3 = function(){
