@@ -22,7 +22,7 @@ module.exports = function(game) {
     // game.scale.startFullScreen(false);
     
       
-    game.state.start('preloader');
+    game.state.start('menu');
   };
 
   function addStats() {

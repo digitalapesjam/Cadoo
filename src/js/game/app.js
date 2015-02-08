@@ -4,6 +4,7 @@ var Phaser = require('Phaser')
   , states =
     { boot: require('./states/boot.js')
     , preloader: require('./states/preloader.js')
+    , menu: require('./states/menu.js')
     , game: require('./states/game.js')
     , insertname: require('./states/insertname.js')
     }

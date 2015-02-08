@@ -16,7 +16,8 @@ module.exports = function (game) {
         game.load.audio('shimmer', 'audio/shimmer_1.mp3');
         game.load.audio('bump_rock', 'audio/synthetic_explosion.mp3');
         game.load.audio('branchhit', 'audio/ledge2.mp3');
-        game.load.audio('birdhit', 'audio/peacockscream.mp3');
+        game.load.audio('birdhit0', 'audio/peacockscream.mp3');
+        game.load.audio('birdhit1', 'audio/vulture.mp3');
         game.load.audio('impact0', 'audio/qubodupImpactMetal.mp3');
         game.load.audio('impact1', 'audio/qubodupImpactWood.mp3');
         game.load.audio('impact2', 'audio/qubodupImpactStone.mp3');
@@ -29,9 +30,16 @@ module.exports = function (game) {
         game.load.game.load.spritesheet('blood', 'images/blood.png#grunt-cache-bust', 32, 16);
         game.load.game.load.spritesheet ('stickman_flat', 'images/flat.png#grunt-cache-bust',32,32);
         game.load.game.load.spritesheet ('coin', 'images/coin.png#grunt-cache-bust',32,21);
+
+        ['01', '02', '11', '14', '15', '16', '17', '18'].forEach(function(el, id) {
+            var swosh = 'swosh'+id;
+            var fname = 'audio/swosh-' + el + '.mp3';
+            game.load.audio(swosh, fname);
+        });
     };
 
     preloader.create = function () {
+        //game.state.start('game');
         game.state.start('game');
     };
 
