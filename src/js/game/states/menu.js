@@ -15,11 +15,11 @@ module.exports = function (game) {
         if(typeof(delay) !== 'number')
             delay = 0
 
-        var tween = game.add.tween(textArea).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None).delay(delay);
+        var tween = game.add.tween(textArea).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None).delay(delay);
         tween.start();
     }
     function _hideText(textArea){
-         var tween = game.add.tween(textArea).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+         var tween = game.add.tween(textArea).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
          tween.start();
     }
         
@@ -38,7 +38,7 @@ module.exports = function (game) {
         var text1 = 'Sometimes you dream\n of falling...';
         var text2 = 'and then you wake\n up in your bed.';
 
-        var text3 = 'sometimes you dream of being in your bad...';
+        var text3 = 'sometimes you dream\n of being in your bad...';
         var text4 = 'and then you wake up...';
         
         var continueText = 'Click to continue';
