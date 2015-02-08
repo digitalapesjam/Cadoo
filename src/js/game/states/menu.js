@@ -47,7 +47,8 @@ module.exports = function (game) {
             if(typeof(Obj2Text) !== 'undefined' ){
                 Obj2Text.y =  game.world.centerY/2 + 100;           
                 _showText(Obj2Text, delay + 1000);
-            }
+            } else
+                Obj1Text.y = game.world.centerY/2;
 
         }
 
@@ -57,19 +58,19 @@ module.exports = function (game) {
     gameState.create = function () {
         game.world.setBounds(0, 0, game.width, worldHeight);
         
-        var startGameText = "Press here to start game";
+        var startGameText = "Play";
         var creditsText = "Credits";
 
         var style = { font: "35px Arial", fill: "#ffffff", align: "center" };
 
 
         var text1 = 'Sometimes you dream\n of falling...';
-        var text2 = 'and then you wake up\n  in your bed...';
+        var text2 = '...then you wake up\n  in your bed';
 
-        var text3 = 'sometimes you dream\n of being in your bad...';
-        var text4 = 'and then you wake up...';
+        var text3 = 'Sometimes you dream\n of being in your bed...';
+        var text4 = '...then you wake up...';
         
-        var continueText = 'Click to continue';
+        var continueText = 'Play';
 
         var initYOffset = -5000;
         var centeredTextX = game.world.centerX/2 - 20
@@ -79,6 +80,9 @@ module.exports = function (game) {
         var continueArea = game.add.text(centeredTextX, initYOffset, continueText, style);
 
         var startGameButton = game.add.text(centeredTextX, initYOffset, startGameText, style);
+        startGameButton.anchor.set(0.5,0.5);
+        startGameButton.x = game.width/2;
+        
         var creditsButton = game.add.text(centeredTextX, initYOffset, creditsText, style);
 
         var text3Area = game.add.text(centeredTextX, initYOffset, text3, style);
@@ -100,33 +104,32 @@ module.exports = function (game) {
             continueArea.alpha = 0;
         }
 
-
+        var startGame = function(){
+            game.state.start('preloader');
+        }
         
+        var from2to3 = function(){
+            showScreen(text3Area, text4Area, 0, hideAll); 
+            setTimeout(startGame,2500);
+        } 
+
         var from1to2 = function(){
             showScreen(startGameButton, undefined, 0, hideAll); 
         } 
 
-        var from2to3 = function(){
-            showScreen(text3Area, text4Area, 0, hideAll); 
-        } 
-
-        var startGame = function(){
-            game.state.start('preloader');
-        }
-
-
-        text1Area.events.onInputUp.add(from1to2);
-        text2Area.events.onInputUp.add(from1to2);
+        //text1Area.events.onInputUp.add(from1to2);
+        //text2Area.events.onInputUp.add(from1to2);
         startGameButton.events.onInputUp.add(from2to3);
         text3Area.events.onInputUp.add(startGame);
         text4Area.events.onInputUp.add(startGame);
 
         hideAll();
         showScreen(text1Area, text2Area, 0, hideAll);
+        setTimeout(from1to2,4000);
 
         //game.add.text(game.world.centerX/2, 0, 'Quick Start', style)
 
-        game.add.text(centeredTextX, initYOffset, "Skip Intro", style)
+        //game.add.text(centeredTextX, initYOffset, "Skip Intro", style)
 
     };
 
