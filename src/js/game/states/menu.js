@@ -141,6 +141,7 @@ module.exports = function (game) {
 
 
         var startGame = function(){
+            hideCurScreen();
             game.state.start('preloader');
         }
         
