@@ -111,7 +111,7 @@ module.exports = function (game) {
         } 
 
         var startGame = function(){
-            game.state.start('game');
+            game.state.start('preloader');
         }
 
 
@@ -126,6 +126,7 @@ module.exports = function (game) {
 
         //game.add.text(game.world.centerX/2, 0, 'Quick Start', style)
 
+        game.add.text(centeredTextX, initYOffset, "Skip Intro", style)
 
     };
 

@@ -40,7 +40,7 @@ module.exports = function (game) {
 
     preloader.create = function () {
         //game.state.start('game');
-        game.state.start('menu');
+        game.state.start('game');
     };
 
     return preloader;
