@@ -32,22 +32,24 @@ Fallingman.prototype.create= function() {
 
 Fallingman.prototype.update = function() {
     
+    var incr = 70;
+    var maxVelX = 500;
     if (!this.bouncing) {
         if (this.falling && !this.dragged) {
             if (this.rotation != null ) 
                 this.sprite.body.velocity.x = this.rotation*10;
             else if(this.cursors.left.isDown)
-                this.sprite.body.velocity.x -= 50;
+                this.sprite.body.velocity.x -= incr;
             else if(this.cursors.right.isDown)
-                this.sprite.body.velocity.x += 50;
+                this.sprite.body.velocity.x += incr;
             else 
                     this.sprite.body.velocity.x *= 0.95;
 
-            if (this.sprite.body.velocity.x < -300)
-                this.sprite.body.velocity.x  = -300;
+            if (this.sprite.body.velocity.x < -maxVelX)
+                this.sprite.body.velocity.x  = -maxVelX;
 
-            if (this.sprite.body.velocity.x > 300)
-                this.sprite.body.velocity.x = 300;
+            if (this.sprite.body.velocity.x > maxVelX)
+                this.sprite.body.velocity.x = maxVelX;
         } else {
             this.sprite.body.velocity.x = 0;
         }
