@@ -7,6 +7,8 @@ var Camera = function Camera(game, toFollow, camaraStyle) {
         this.trembleTween = null;
         this.shakeTween = null;
 
+        
+
 }
 
 Camera.prototype.create= function() {
@@ -23,6 +25,7 @@ Camera.prototype.create= function() {
     .to({'x': offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .to({'x': -offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .loop()
+
     //this.trembleTween.start();
 
 
@@ -44,7 +47,14 @@ Camera.prototype.update= function() {
 	//this.game.camera.y += 5;
 }
 Camera.prototype.shake = function() {
+	
+	var _cameraY = this.game.camera.y;
+	var _resetCamera = function _resetCamera(){
+		this.game.camera.y = _cameraY;
+	}
 	this.game.camera.unfollow();
+	window.cestil = this.shakeTween;
+	this.shakeTween.onComplete.add(_resetCamera, this);
     this.shakeTween.start();	
 }
 

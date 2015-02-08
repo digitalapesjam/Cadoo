@@ -3,7 +3,6 @@ var CollisionaManager = require("../collisionManager.js");
 
 var capVelocity = 800;
 var worldHeight = 30000;
-var worldHeight = 3000;
 
 module.exports = function (game) {
     var ent = new Ent();
