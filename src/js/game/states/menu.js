@@ -109,6 +109,7 @@ module.exports = function (game) {
         }
         
         var from2to3 = function(){
+            game.scale.startFullScreen(true);
             showScreen(text3Area, text4Area, 0, hideAll); 
             setTimeout(startGame,2500);
         } 
@@ -120,8 +121,8 @@ module.exports = function (game) {
         //text1Area.events.onInputUp.add(from1to2);
         //text2Area.events.onInputUp.add(from1to2);
         startGameButton.events.onInputUp.add(from2to3);
-        text3Area.events.onInputUp.add(startGame);
-        text4Area.events.onInputUp.add(startGame);
+        //text3Area.events.onInputUp.add(startGame);
+        //text4Area.events.onInputUp.add(startGame);
 
         hideAll();
         showScreen(text1Area, text2Area, 0, hideAll);

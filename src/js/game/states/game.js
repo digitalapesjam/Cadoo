@@ -2,7 +2,7 @@ var Ent = require('../ent.js');
 var CollisionaManager = require("../collisionManager.js");
 
 var capVelocity = 800;
-var worldHeight = 35000;
+var worldHeight = 40000;
 //var worldHeight = 1600;
 
 
