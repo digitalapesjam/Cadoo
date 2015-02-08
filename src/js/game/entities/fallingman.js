@@ -32,7 +32,7 @@ Fallingman.prototype.create= function() {
 
 Fallingman.prototype.update = function() {
     
-    var incr = 70;
+    var incr = 50;
     var maxVelX = 500;
     if (!this.bouncing) {
         if (this.falling && !this.dragged) {
