@@ -53,11 +53,11 @@ module.exports = function (game) {
 
     preloader.onLoadComplete = function() {
         clearInterval(this._intv);
-        text.text = 'Loaded: 100%';
+        text.text = 'Loading... 100%';
     };
 
     preloader.onInterval = function() {
-        text.text = 'Loaded: ' + game.load.progress + '%';
+        text.text = 'Loading... ' + game.load.progress + '%';
     };
 
     preloader.create = function () {
