@@ -6,6 +6,9 @@ module.exports = function(game) {
   var boot = {};
 
   boot.create = function () {
+      
+    Parse.initialize("0XC2Fw1zG9HcGxxHWwCXKPwV8NZuHrHct0N0DxVj", "DDLX2bdWogdCN6uSQLMpjSYIBybBeD2bxnFQUhjq");
+  
 
     if (properties.showStats) {
       addStats();

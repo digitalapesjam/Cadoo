@@ -5,6 +5,7 @@ var Phaser = require('Phaser')
     { boot: require('./states/boot.js')
     , preloader: require('./states/preloader.js')
     , game: require('./states/game.js')
+    , insertname: require('./states/insertname.js')
     }
   , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game');
 

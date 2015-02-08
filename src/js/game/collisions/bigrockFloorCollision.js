@@ -1,8 +1,9 @@
 
-var BigrockFloorCollision = function Floor(bigrock,floor, camera) {
+var BigrockFloorCollision = function Floor(bigrock,floor, camera, scoreDisplay) {
     this.bigrock = bigrock;
     this.floor = floor;
     this.camera = camera;
+    this.scoreDisplay = scoreDisplay;
 }
 
 BigrockFloorCollision.prototype.checkCollision = function(game) {
@@ -18,6 +19,10 @@ BigrockFloorCollision.prototype.checkCollision = function(game) {
         //this.camera.trembleTween.start()
         //this.camera.trembleTween.start()
         //this.bigrock.emitter.destroy();
+        
+        setTimeout(function() { 
+            game.state.start('insertname',true,true,this.scoreDisplay.score);
+        }.bind(this),1260);
 
     },null,this);
 }

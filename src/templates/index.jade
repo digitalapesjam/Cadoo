@@ -1,6 +1,7 @@
 doctype
 html
 head
+  script(src="//www.parsecdn.com/js/parse-1.3.4.min.js")
   meta(name='apple-mobile-web-app-capable' content='yes')
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -18,6 +19,17 @@ head
 
 body
   #game
+    #inserttext
+        h1(id="title")
+        h2(id="subtitle")
+        h3(id="scoretext")
+        form(id="upload" name="login", action="", method="post")
+            input(id="playername" name="playername",type="text", value="Mr. Pink")
+            input(type="submit", value="Submit")
+            
+    #scoreboard
+        ol(id="scores")
+        a(id="restart" href="#") Restart
 
   if (!productionBuild)
     script.

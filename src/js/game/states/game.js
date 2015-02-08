@@ -76,7 +76,7 @@ module.exports = function (game) {
         collisionManager.addCollision(new ManSidesCollision(fallingman, sidetiles));
         collisionManager.addCollision(new ManCollectibleCollision(fallingman, collectibles.group, scoreDisplay.updateScore.bind(scoreDisplay)));
         collisionManager.addCollision(new CollectibleFloorCollision(floor, collectibles.group));
-        collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor, camera));
+        collisionManager.addCollision(new BigrockFloorCollision(bigrock,floor, camera, scoreDisplay));
         collisionManager.addCollision(new ManObstacleCollision(fallingman, obstacles));
         collisionManager.addCollision(new ManBigRockCollision(fallingman, bigrock));
         collisionManager.addCollision(new BigRockObstacleCollision(bigrock, obstacles));
