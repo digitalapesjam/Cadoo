@@ -19,7 +19,7 @@ ManObstacleCollision.prototype.checkCollision = function(game) {
                 this.lastLedgeHit = ledge;
                 this.slowDown(2*sd);
                 this.ledgesHit += 1;
-                var name = 'impact' + Math.round(Math.random() * 2);
+                var name = 'impact' + game.rnd.integer() % 3;
                 this.playAudio(name, game);
                 if (this.ledgesHit >= this.maxLedgesHit) {
                     this.man.sprite.body.velocity.y = 0;
@@ -46,7 +46,8 @@ ManObstacleCollision.prototype.checkCollision = function(game) {
             if (this.lastBirdHit !== bird) {
                 this.lastBirdHit = bird;
                 this.slowDown(sd);
-                this.playAudio('birdhit', game);
+                var name = 'birdhit' + game.rnd.integer() % 2;
+                this.playAudio(name, game);
                 bird.kill();
                 var emitter = game.add.emitter(bird.x, bird.y + 100, 5);
                 emitter.maxParticles = 10;
@@ -68,7 +69,6 @@ ManObstacleCollision.prototype.checkCollision = function(game) {
 }
 
 ManObstacleCollision.prototype.playAudio = function(name, game) {
-    console.log('play', name)
     var audio = game.add.audio(name);
     audio.onDecoded.add(function() {audio.play();});
 };
