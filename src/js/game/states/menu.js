@@ -84,7 +84,7 @@ module.exports = function (game) {
         var text4Area = game.add.text(centeredTextX, initYOffset, text4, style);
         centerIt(text4Area);
 
-        var creditsArea = game.add.text(centeredTextX, initYOffset, 'Burelli Paolo (Web Designer) \nBoemo Jurgo (Geologist) \nTurello Paolo (Obstacle Makers) \nZanitti Francesco (Relationship Manager)', styleSmall);
+        var creditsArea = game.add.text(centeredTextX, initYOffset, 'Burelli Paolo (Lead Artist) \nBoemo Jurgo (Lead Geologist) \nTurello Paolo (Lead Obstacles Maker) \nZanitti Francesco (Lead Relationships Manager)', styleSmall);
         centerIt(creditsArea);
         var returnInitArea = game.add.text(centeredTextX, initYOffset, '<Return To Intro', style);
 
