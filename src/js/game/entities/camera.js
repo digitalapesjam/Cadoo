@@ -29,7 +29,7 @@ Camera.prototype.create= function() {
 }
 
 Camera.prototype.update= function() {
-	this.game.debug.cameraInfo(this.game.camera, 32, 32);
+	//this.game.debug.cameraInfo(this.game.camera, 32, 32);
 }
 
 Camera.prototype.shake = function() {
