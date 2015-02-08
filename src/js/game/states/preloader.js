@@ -44,7 +44,10 @@ module.exports = function (game) {
     };
 
     preloader.onLoadStart = function() {
-        text = game.add.text(200, 200, 'Loaded: 0%', {fontSize: '24px', fill: '#FFF'});
+        text = game.add.text(200, 200, 'Loading... 0%', {fontSize: '24px', fill: '#FFF'});
+        text.anchor.set(0.5,0.5);
+        text.x = game.width/2;
+        text.y = game.width/2;
         this._intv = setInterval(this.onInterval.bind(this), 200);
     };
 
