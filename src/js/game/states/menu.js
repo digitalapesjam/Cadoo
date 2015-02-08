@@ -11,18 +11,42 @@ var worldHeight = 1600;
 module.exports = function (game) {
     var ent = new Ent();
 
+    var curShowTweens = [];
+
     function _showText(textArea, delay){
         if(typeof(delay) !== 'number')
             delay = 0
 
-        var tween = game.add.tween(textArea).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None).delay(delay);
-        tween.start();
+        
+        curShowTween = game.add.tween(textArea).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None).delay(delay);
+        curShowTweens.push(curShowTween);
+        curShowTween.start();
     }
     function _hideText(textArea){
          var tween = game.add.tween(textArea).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
          tween.start();
     }
-        
+    
+    function showScreen(Obj1Text, Obj2Text, delay, hideAll){
+            if(typeof(delay) !== 'number')
+                delay = 0
+
+            
+
+            curShowTweens.forEach(function(tween){
+                tween.stop()
+            })
+
+            hideAll();
+
+            Obj1Text.y =  game.world.centerY/2 - 100;
+            Obj2Text.y =  game.world.centerY/2 + 100;           
+
+            _showText(Obj1Text, delay + 0);
+            _showText(Obj2Text, delay + 1000);
+
+        }
+
 
     var gameState = {};
 
@@ -36,7 +60,7 @@ module.exports = function (game) {
 
 
         var text1 = 'Sometimes you dream\n of falling...';
-        var text2 = 'and then you wake\n up in your bed.';
+        var text2 = 'and then you wake up\n  in your bed...';
 
         var text3 = 'sometimes you dream\n of being in your bad...';
         var text4 = 'and then you wake up...';
@@ -59,7 +83,7 @@ module.exports = function (game) {
         text4Area.inputEnabled = true;
         startGameButton.inputEnabled = true;
         
-        function hideAll(){
+        var hideAll = function hideAll(){
             text1Area.alpha = 0;
             text2Area.alpha = 0;
             text3Area.alpha = 0;
@@ -69,26 +93,14 @@ module.exports = function (game) {
             continueArea.alpha = 0;
         }
 
-        function showScreen(Obj1Text, Obj2Text, delay){
-            if(typeof(delay) !== 'number')
-                delay = 0
 
-            hideAll();
-
-            Obj1Text.y =  game.world.centerY/2 - 100;
-            Obj2Text.y =  game.world.centerY/2 + 100;           
-
-            _showText(Obj1Text, delay + 0);
-            _showText(Obj2Text, delay + 1000);
-
-        }
         
         var from1to2 = function(){
-            showScreen(startGameButton, creditsButton); 
+            showScreen(startGameButton, creditsButton, 0, hideAll); 
         } 
 
         var from2to3 = function(){
-            showScreen(text3Area, text4Area); 
+            showScreen(text3Area, text4Area, 0, hideAll); 
         } 
 
         var startGame = function(){
@@ -103,7 +115,7 @@ module.exports = function (game) {
         text4Area.events.onInputUp.add(startGame);
 
         hideAll();
-        showScreen(text1Area, text2Area);
+        showScreen(text1Area, text2Area, 0, hideAll);
 
         //game.add.text(game.world.centerX/2, 0, 'Quick Start', style)
 
