@@ -19,16 +19,14 @@ module.exports = function(game) {
       
     var theForm = $("#upload");
       
-    $("#upload").submit(function uploadScore(e) {
-        
+    $("#upload").unbind('submit').submit(function uploadScore(e) {
+             $("#scores").html("");
             var TestObject = Parse.Object.extend("Score");
             var testObject = new TestObject();
             testObject.save({"score":score,"name":$("#playername").val() ,"cheating":false}).then(function(object) {
+                
                 $("#inserttext").css("display","none");
                 $("#scoreboard").css("display","block");
-                $("#scores").html("");
-                
-                
                 var GameScore = Parse.Object.extend("Score");
                 var query = new Parse.Query(GameScore);
                 query.equalTo("cheating", false);
@@ -36,6 +34,7 @@ module.exports = function(game) {
                 query.descending("score");
                 query.find({
                   success: function(results) {
+                    console.info(results);
                     for (var i = 0; i < results.length; i++) { 
                       var object = results[i];
                       $("#scores").append("<li>"+object.get('name')+": "+object.get('score')+"</li>");
