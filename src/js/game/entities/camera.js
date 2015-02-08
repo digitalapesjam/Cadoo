@@ -5,15 +5,13 @@ var Camera = function Camera(game, toFollow, camaraStyle) {
         this.trembleOffset = 20;
 
         this.trembleTween = null;
-        this.shakeTween = null;
-
-        
+        this.shakeTween = null;     
 
 }
 
 Camera.prototype.create= function() {
     this.game.camera.follow(this.toFollow.sprite, this.camaraStyle);
-	this.game.debug.cameraInfo(this.game.camera, 32, 32);
+	//this.game.debug.cameraInfo(this.game.camera, 32, 32);
 	var _worldRectangle = this.game.world.bounds;
 
 	this.game.camera.bounds = new Phaser.Rectangle(-10 ,0,_worldRectangle.width+(this.trembleOffset*2), _worldRectangle.height)	
@@ -26,9 +24,6 @@ Camera.prototype.create= function() {
     .to({'x': -offsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .loop()
 
-    //this.trembleTween.start();
-
-
     this.shakeTween = this.game.add.tween(this.game.camera);
     var trembleTweenOffsetThreshold = 25;
     var animationTime = 40;
@@ -36,28 +31,22 @@ Camera.prototype.create= function() {
     .to({'y': trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .to({'y': -trembleTweenOffsetThreshold}, animationTime, Phaser.Easing.Linear.None)
     .repeat(21)
-    //.to({'y': this.toFollow.posy}, animationTime, Phaser.Easing.Linear.None)
-    
-
     
 }
 
 Camera.prototype.update= function() {
-	//this.game.debug.cameraInfo(this.game.camera, 32, 32);
-	//this.game.camera.y += 5;
+
 }
+
 Camera.prototype.shake = function() {
-	
 	var _cameraY = this.game.camera.y;
 	var _resetCamera = function _resetCamera(){
 		this.game.camera.y = _cameraY;
 	}
 	this.game.camera.unfollow();
-	window.cestil = this.shakeTween;
 	this.shakeTween.onComplete.add(_resetCamera, this);
     this.shakeTween.start();	
+
 }
-
-
 
 module.exports = Camera;
