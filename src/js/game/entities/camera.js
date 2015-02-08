@@ -1,7 +1,6 @@
-var Camera = function Camera(game, toFollow, camaraStyle) {
+var Camera = function Camera(game, toFollow) {
         this.game = game;
         this.toFollow = toFollow;
-        this.camaraStyle = camaraStyle||Phaser.Camera.FOLLOW_TOPDOWN;
         this.trembleOffset = 20;
 
         this.trembleTween = null;
@@ -10,12 +9,19 @@ var Camera = function Camera(game, toFollow, camaraStyle) {
 }
 
 Camera.prototype.create= function() {
-    this.game.camera.follow(this.toFollow.sprite, this.camaraStyle);
+    this.game.camera.follow(this.toFollow.sprite);
 	
 	var _worldRectangle = this.game.world.bounds;
 
+    var cam = this.game.camera;
+    var spacer = cam.width/3;
+    var y = 0,
+        x = spacer,
+        width = cam.width-spacer,
+        height = cam.height/3;
+
+    this.game.camera.deadzone = new Phaser.Rectangle(x, y, width, height);
 	this.game.camera.bounds = new Phaser.Rectangle(-this.trembleOffset ,0,_worldRectangle.width+(this.trembleOffset*2), _worldRectangle.height)	
-	//this.game.camera.bounds = new Phaser.Rectangle(-10 ,-10,1000, _worldRectangle.height)	
 
     this.trembleTween = this.game.add.tween(this.game.camera);
     var offsetThreshold = 1;

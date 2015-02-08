@@ -16,8 +16,10 @@ Obstacles.prototype.create = function () {
     this.ledges.enableBody = true;
     this.branches_roots.enableBody = true;
 
-    for (var i = 0; i < this.sizey / 400; i++) {
-		var verticalPosition = ((i + 1) * 400) + this.game.rnd.integerInRange(-80, 80);
+    var freq = 500;
+
+    for (var i = 0; i < this.sizey / freq; i++) {
+		var verticalPosition = ((i + 1) * freq) + this.game.rnd.integerInRange(-80, 80);
 
     	switch (this.game.rnd.integerInRange(0, 2)) {
     		case 0:
