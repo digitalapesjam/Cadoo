@@ -1,16 +1,16 @@
 {
-  "name": "phaser-js-boilerplate",
+  "name": "Cadoo",
   "version": "0.1.0",
-  "description": "A Grunty Phaser.js SDK",
+  "description": "A Nordic Game Jam 2015 wonderful game",
   "main": "build/js/app.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:lukewilde/phaser-js-boilerplate.git"
+    "url": "git@github.com:paoloburelli/Cadoo.git"
   },
-  "author": "Luke Wilde",
+  "author": "Jurgo Boemo, Paolo Burelli, Paolo Turello & Francesco Zanitti",
   "license": "MIT",
   "browser": {
     "lodash": "./node_modules/lodash/dist/lodash.compat.js",
