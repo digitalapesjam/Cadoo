@@ -13,7 +13,6 @@ module.exports = function (game) {
     function _showText(textArea, delay){
         if(typeof(delay) !== 'number')
             delay = 0
-
         
         curShowTween = game.add.tween(textArea).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None).delay(delay);
         curShowTweens.push(curShowTween);
@@ -23,17 +22,12 @@ module.exports = function (game) {
          var tween = game.add.tween(textArea).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
          tween.start();
     }
-    
-    
-    
 
     function showScreen(Obj1Text, Obj2Text, delay){
             if(typeof(delay) !== 'number')
                 delay = 0
 
-            
             Obj1Text.y =  game.world.centerY/2 - 50;
-            
 
             _showText(Obj1Text, delay + 0);
 
@@ -49,6 +43,12 @@ module.exports = function (game) {
     }
 
     var gameState = {};
+
+    gameState.preload = function(){
+        game.load.image('intro1', 'images/intro2.png#grunt-cache-bust');
+        game.load.image('intro2', 'images/intro1.png#grunt-cache-bust');
+    }
+
     gameState.create = function () {
         var startGameText = "[ Play ]";
         var creditsText = "Developed By:";
@@ -84,7 +84,7 @@ module.exports = function (game) {
         var text4Area = game.add.text(centeredTextX, initYOffset, text4, style);
         centerIt(text4Area);
 
-        var creditsArea = game.add.text(centeredTextX, initYOffset, 'Burelli Paolo (Lead Artist) \nBoemo Jurgo (Lead Geologist) \nTurello Paolo (Lead Obstacles Maker) \nZanitti Francesco (Lead Relationships Manager)', styleSmall);
+        var creditsArea = game.add.text(centeredTextX, initYOffset, 'Paolo Burelli (Lead Artist)\nJurgo Boemo(Lead Geologist)\nPaolo Turello(Lead Obstacles Maker)\nFrancesco Zanitti (Lead Relationships Manager)', styleSmall);
         centerIt(creditsArea);
         var returnInitArea = game.add.text(centeredTextX, initYOffset, '<Return To Intro', style);
 
@@ -96,6 +96,13 @@ module.exports = function (game) {
         creditsButton.inputEnabled = true;
         returnInitArea.inputEnabled = true;
         
+        var intro1Img = game.add.sprite(centeredTextX, initYOffset, 'intro1');
+        centerIt(intro1Img);
+
+        var intro2Img = game.add.sprite(centeredTextX, initYOffset, 'intro2');
+        centerIt(intro2Img);
+
+
         var hideAll = function hideAll(){
             text1Area.alpha = 0;
             text2Area.alpha = 0;
@@ -105,6 +112,9 @@ module.exports = function (game) {
             creditsButton.alpha = 0;
             creditsArea.alpha = 0;
             returnInitArea.alpha = 0;
+            intro1Img.alpha = 0;
+            intro2Img.alpha = 0;
+
 
             var hideOffesetY = -5000;
 
@@ -116,6 +126,8 @@ module.exports = function (game) {
             creditsButton.y = hideOffesetY;
             creditsArea.y = hideOffesetY;
             returnInitArea.y = hideOffesetY;
+            intro1Img.y = hideOffesetY;
+            intro2Img.y = hideOffesetY;
         }
         var hideCurScreen = function hideCurScreen(){
             curShowTweens.forEach(function(tween){
@@ -129,18 +141,40 @@ module.exports = function (game) {
 
 
         var startGame = function(){
+            hideCurScreen();
             game.state.start('preloader');
         }
         
         var goIntro2 = function(){
             hideCurScreen();
-            showScreen(text3Area, text4Area, 0); 
-            curTimeouts.push(setTimeout(startGame,2500));
+
+            text3Area.y = 150;
+            _showText(text3Area); 
+
+            intro2Img.y = 250;
+            _showText(intro2Img, 500); 
+
+            text4Area.y = 550;
+            _showText(text4Area, 1000);
+
+            curTimeouts.push(setTimeout(startGame,3000));
         } 
 
         var goIntro1 = function(){
             hideCurScreen();
-            showScreen(text1Area, text2Area, 0);
+            
+            text1Area.y = 100;
+            _showText(text1Area); 
+
+            intro1Img.y = 200;
+            _showText(intro1Img, 500); 
+
+            text2Area.y = 400;
+            _showText(text2Area, 1000);
+
+            intro2Img.y = 500
+            _showText(intro2Img, 1500); 
+
             curTimeouts.push(setTimeout(goIntro2,4000));
         } 
 

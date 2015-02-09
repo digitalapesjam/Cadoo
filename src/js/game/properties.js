@@ -11,5 +11,5 @@ module.exports =
     { x: 640
     , y: 1138    
     }
-  //, analyticsId: 'UA-50892214-2'
+  , analyticsId: 'UA-59517503-1'
   };
