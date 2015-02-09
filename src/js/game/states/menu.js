@@ -45,8 +45,8 @@ module.exports = function (game) {
     var gameState = {};
 
     gameState.preload = function(){
-        game.load.image('intro1', 'images/intro1.png#grunt-cache-bust');
-        game.load.image('intro2', 'images/intro2.png#grunt-cache-bust');
+        game.load.image('intro1', 'images/intro2.png#grunt-cache-bust');
+        game.load.image('intro2', 'images/intro1.png#grunt-cache-bust');
     }
 
     gameState.create = function () {
