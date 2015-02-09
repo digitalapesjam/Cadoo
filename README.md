@@ -2,4 +2,4 @@
 Cadoo is falling-simulator with arcade physics.
 
 Try it on:
-http://paoloburelli.github.io/codename-epic/
+frza.itch.io/cadoo
