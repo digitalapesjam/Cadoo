@@ -42,6 +42,7 @@ module.exports = function (game) {
 
     gameState.create = function () {        
         game.world.setBounds(0, 0, game.width, worldHeight);
+
         setBG(game);
 
         game.physics.startSystem(Phaser.Physics.ARCADE);

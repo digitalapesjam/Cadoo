@@ -1,3 +1,5 @@
+
+
 var Phaser = require('Phaser')
   , _ = require('lodash')
   , properties = require('./properties')
@@ -8,7 +10,14 @@ var Phaser = require('Phaser')
     , game: require('./states/game.js')
     , insertname: require('./states/insertname.js')
     }
-  , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game');
+  
+
+var ratio = 1;
+if (window.innerWidth < properties.size.x)
+    ratio = properties.size.x/window.innerWidth;
+var newHeight = window.innerHeight*ratio;
+
+game = new Phaser.Game(properties.size.x, newHeight < properties.size.y ? newHeight : properties.size.y , Phaser.AUTO, 'game');
 
 // Automatically register each state.
 _.each(states, function(state, key) {

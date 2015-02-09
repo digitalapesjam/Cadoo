@@ -16,11 +16,13 @@ module.exports = function(game) {
       $("#title").text("You Died!");
       $("#subtitle").text("What did you expect?");
       $("#scoretext").html("Hey, but your score is "+score+"!<br/>Insert your name and see how far you got in the world ranking.");
+      $("#submit").css("visibility","visible");
       
     var theForm = $("#upload");
       
     $("#upload").unbind('submit').submit(function uploadScore(e) {
-             $("#scores").html("");
+            $("#scores").html("");
+            $("#submit").css("visibility","hidden");
             var TestObject = Parse.Object.extend("Score");
             var testObject = new TestObject();
             testObject.save({"score":score,"name":$("#playername").val() ,"cheating":false}).then(function(object) {
@@ -49,7 +51,7 @@ module.exports = function(game) {
             e.stopPropagation();
             e.preventDefault();
     });
-      
+    
     $("#restart").click(function(e) {
             $("#scoreboard").css("display","none");
             game.state.start('preloader');

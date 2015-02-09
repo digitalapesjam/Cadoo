@@ -5,7 +5,7 @@ head
   meta(name="apple-mobile-web-app-status-bar-style" content="black")
   meta(name="apple-mobile-web-app-capable" content="yes")
   meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
 
   meta(property="og:title", content=properties.title)
   meta(property="og:description", content=properties.description)
@@ -24,13 +24,14 @@ body
         h1(id="title")
         h2(id="subtitle")
         h3(id="scoretext")
-        form(id="upload" name="login", action="", method="post")
-            input(id="playername" name="playername",type="text", value="Mr. Pink")
-            input(type="submit", value="Submit")
+        form(id="upload",name="login", action="", method="post")
+            input(id="playername",name="playername",type="text", value="Mr. Pink")
+            input(id="submit",type="submit", value="Submit")
             
     #scoreboard
         ol(id="scores")
-        a(id="restart" href="#") Restart
+        form(id="restartform", action="", method="post")
+            input(id="restart",type="submit",value="Restart")
 
   if (!productionBuild)
     script.

@@ -32,13 +32,13 @@ module.exports = function (game) {
                 delay = 0
 
             
-            Obj1Text.y =  game.world.centerY/2 - 100;
+            Obj1Text.y =  game.world.centerY/2 - 50;
             
 
             _showText(Obj1Text, delay + 0);
 
             if(typeof(Obj2Text) !== 'undefined' ){
-                Obj2Text.y =  game.world.centerY/2 + 100;           
+                Obj2Text.y =  game.world.centerY/2 + 50;           
                 _showText(Obj2Text, delay + 1000);
             } else
                 Obj1Text.y = game.world.centerY/2;

@@ -16,13 +16,14 @@ module.exports = function(game) {
 
     game.sound.mute = properties.mute;
 
+    //game.scale.startFullScreen(false);        
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.setScreenSize();
     
       
-    game.state.start('menu');
-    //game.state.start('insertname',true,true,100);
+    //game.state.start('menu');
+    game.state.start('insertname',true,true,0);
   };
 
   function addStats() {
