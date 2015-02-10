@@ -26,12 +26,15 @@ body
         h3(id="scoretext")
         form(id="upload",name="login", action="", method="post")
             input(id="playername",name="playername",type="text", value="Mr. Pink")
+            br
             input(id="submit",type="submit", value="Submit")
+            input(id="fastrestart",type="submit",value="Retry")
             
     #scoreboard
+        h2(id="leader")
         ol(id="scores")
         form(id="restartform", action="", method="post")
-            input(id="restart",type="submit",value="Restart")
+            input(id="restart",type="submit",value="Retry")
 
   if (!productionBuild)
     script.

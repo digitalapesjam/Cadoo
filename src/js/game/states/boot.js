@@ -22,8 +22,8 @@ module.exports = function(game) {
     game.scale.setScreenSize();
     
       
-    game.state.start('menu');
-    //game.state.start('insertname',true,true,0);
+    //game.state.start('menu');
+    game.state.start('insertname',true,true,0);
   };
 
   function addStats() {
