@@ -223,10 +223,10 @@ module.exports = function (grunt) {
     , 'stylus'
     , 'uglify'
     , 'copy'
-    , 'cacheBust'
-    , 'connect'
-    , 'open'
-    , 'watch'
+//    , 'cacheBust'
+//    , 'connect'
+//    , 'open'
+//    , 'watch'
     ]
   );
 

@@ -1,5 +1,5 @@
 {
-  "name": "phaser-js-boilerplate",
+  "name": "Cadoo",
   "version": "0.1.0",
   "dependencies": {
     "browserify": {
