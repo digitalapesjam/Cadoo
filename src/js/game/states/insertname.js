@@ -19,7 +19,7 @@ module.exports = function(game) {
       $("#title").text("You Died!");
       $("#subtitle").text("What did you expect?");
       $("#scoretext").html("Hey, but your score is "+score+"!<br/>Insert your name and see how far you got in the world ranking.");
-      $("#submit").css("visibility","visible");
+      $("#upload").css("visibility","visible");
       
     var theForm = $("#upload");
       
@@ -27,7 +27,7 @@ module.exports = function(game) {
             localStorage.player_name = $("#playername").val();
         
             $("#scores").html("");
-            $("#submit").css("visibility","hidden");
+            $("#upload").css("visibility","hidden");
             var TestObject = Parse.Object.extend("Score");
             var testObject = new TestObject();
             testObject.save({"score":score,"name":$("#playername").val() ,"cheating":false}).then(function(object) {
