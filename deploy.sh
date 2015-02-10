@@ -43,6 +43,9 @@ function disable_expanded_output {
 	fi
 }
 
+mv build/images/apple-touch-icon* build/
+	mv build/images/favicon.ico build/
+
 enable_expanded_output
 
 function set_user_id {
