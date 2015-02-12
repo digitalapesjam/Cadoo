@@ -4,7 +4,7 @@ It was developed in 48 hours at the Nordic Game Jam 2015 based on the theme "Obv
 It is built upon phaser.io and it should be playable on both desktops (with arrow keys) and mobile phones (with the gyro).
 
 Try it on:
-http://paoloburelli.github.io/Cadoo/
+http://digitalapesjam.github.io/Cadoo/
 
 ## Build
 
