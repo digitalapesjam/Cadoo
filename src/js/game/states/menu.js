@@ -79,6 +79,9 @@ module.exports = function (game) {
         var scoreboardButton = game.add.text(centeredTextX, initYOffset, "[ Scoreboard ]", style);
         centerIt(scoreboardButton);
 
+        var goPullRequestsButton = game.add.text(centeredTextX, initYOffset, "[ Ask New Feautures ]", style);
+        centerIt(goPullRequestsButton);
+
 
         var creditsButton = game.add.text(centeredTextX, initYOffset, creditsText, style);
         centerIt(creditsButton);
@@ -98,6 +101,7 @@ module.exports = function (game) {
         text4Area.inputEnabled = true;
         startGameButton.inputEnabled = true;
         scoreboardButton.inputEnabled = true;
+        goPullRequestsButton.inputEnabled = true; 
         creditsButton.inputEnabled = true;
         returnInitArea.inputEnabled = true;
         
@@ -154,6 +158,10 @@ module.exports = function (game) {
             hideCurScreen();
             game.state.start('scoreboard');
         }
+
+        var goPullRequests = function(){
+            window.open("https://github.com/digitalapesjam/Cadoo/pulls");
+        }
         
         var goIntro2 = function(){
             hideCurScreen();
@@ -194,11 +202,13 @@ module.exports = function (game) {
             titleArea.y = 50
             _showText(titleArea); 
 
-            startGameButton.y = 200;
+            startGameButton.y = 150;
             _showText(startGameButton); 
             
-            scoreboardButton.y = 250;
+            scoreboardButton.y = 200;
             _showText(scoreboardButton); 
+            goPullRequestsButton.y = 250;
+            _showText(goPullRequestsButton); 
 
 
             creditsButton.y = 350;
@@ -225,7 +235,7 @@ module.exports = function (game) {
         //startGameButton = game.add.button(game.world.centerX - 95, 400, 'button', from2to3, this, 2, 1, 0);
         startGameButton.events.onInputUp.add(goIntro1);
         scoreboardButton.events.onInputUp.add(goScoreboard);
-
+        goPullRequestsButton.events.onInputUp.add(goPullRequests);
         text1Area.events.onInputUp.add(goIntro2);
         text2Area.events.onInputUp.add(goIntro2);
         
