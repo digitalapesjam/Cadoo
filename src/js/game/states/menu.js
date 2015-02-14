@@ -76,6 +76,10 @@ module.exports = function (game) {
         var startGameButton = game.add.text(centeredTextX, initYOffset, startGameText, style);
         centerIt(startGameButton);
 
+        var scoreboardButton = game.add.text(centeredTextX, initYOffset, "[ Scoreboard ]", style);
+        centerIt(scoreboardButton);
+
+
         var creditsButton = game.add.text(centeredTextX, initYOffset, creditsText, style);
         centerIt(creditsButton);
 
@@ -93,6 +97,7 @@ module.exports = function (game) {
         text3Area.inputEnabled = true;
         text4Area.inputEnabled = true;
         startGameButton.inputEnabled = true;
+        scoreboardButton.inputEnabled = true;
         creditsButton.inputEnabled = true;
         returnInitArea.inputEnabled = true;
         
@@ -144,6 +149,11 @@ module.exports = function (game) {
             hideCurScreen();
             game.state.start('preloader');
         }
+
+        var goScoreboard = function(){
+            hideCurScreen();
+            game.state.start('scoreboard');
+        }
         
         var goIntro2 = function(){
             hideCurScreen();
@@ -186,6 +196,10 @@ module.exports = function (game) {
 
             startGameButton.y = 200;
             _showText(startGameButton); 
+            
+            scoreboardButton.y = 250;
+            _showText(scoreboardButton); 
+
 
             creditsButton.y = 350;
             _showText(creditsButton);
@@ -210,6 +224,7 @@ module.exports = function (game) {
 
         //startGameButton = game.add.button(game.world.centerX - 95, 400, 'button', from2to3, this, 2, 1, 0);
         startGameButton.events.onInputUp.add(goIntro1);
+        scoreboardButton.events.onInputUp.add(goScoreboard);
 
         text1Area.events.onInputUp.add(goIntro2);
         text2Area.events.onInputUp.add(goIntro2);

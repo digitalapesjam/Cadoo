@@ -9,6 +9,7 @@ var Phaser = require('Phaser')
     , menu: require('./states/menu.js')
     , game: require('./states/game.js')
     , insertname: require('./states/insertname.js')
+    , scoreboard: require('./states/scoreboard.js')
     }
   
 

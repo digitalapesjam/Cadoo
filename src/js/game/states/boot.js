@@ -23,6 +23,7 @@ module.exports = function(game) {
     
       
     game.state.start('menu');
+    //game.state.start('scoreboard');
     //game.state.start('insertname',true,true,0);
   };
 
