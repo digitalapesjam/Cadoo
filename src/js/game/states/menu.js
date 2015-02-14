@@ -112,31 +112,27 @@ module.exports = function (game) {
         centerIt(intro2Img);
 
 
+        var bodyElements = [
+            text1Area,
+            text2Area,
+            text3Area,
+            text4Area,
+            startGameButton,
+            scoreboardButton,
+            goPullRequestsButton,
+            creditsButton,
+            creditsArea,
+            returnInitArea,
+            intro1Img,
+            intro2Img
+        ];
+
+
         var hideAll = function hideAll(){
-            text1Area.alpha = 0;
-            text2Area.alpha = 0;
-            text3Area.alpha = 0;
-            text4Area.alpha = 0;
-            startGameButton.alpha = 0;
-            creditsButton.alpha = 0;
-            creditsArea.alpha = 0;
-            returnInitArea.alpha = 0;
-            intro1Img.alpha = 0;
-            intro2Img.alpha = 0;
-
-
-            var hideOffesetY = -5000;
-
-            text1Area.y = hideOffesetY;
-            text2Area.y = hideOffesetY;
-            text3Area.y = hideOffesetY;
-            text4Area.y = hideOffesetY;
-            startGameButton.y = hideOffesetY;
-            creditsButton.y = hideOffesetY;
-            creditsArea.y = hideOffesetY;
-            returnInitArea.y = hideOffesetY;
-            intro1Img.y = hideOffesetY;
-            intro2Img.y = hideOffesetY;
+            bodyElements.forEach(function(el){
+                el.alpha = 0;
+                el.y = -5000;
+            });
         }
         var hideCurScreen = function hideCurScreen(){
             curShowTweens.forEach(function(tween){
