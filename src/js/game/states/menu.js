@@ -50,50 +50,35 @@ module.exports = function (game) {
     }
 
     gameState.create = function () {
-        var startGameText = "[ Play ]";
-        var creditsText = "Developed By:";
-
+        
         var styleTitle = { font: "34px Arial", fill: "#ffffff", align: "center"};
         var style = { font: "32px Arial", fill: "#ffffff", align: "center"};
         var styleSmall = { font: "26px Arial", fill: "#ffffff", align: "center"};
 
-
+        var startGameText = "[ Play ]";
+        var creditsText = "Developed By:";
         var text1 = 'Sometimes you dream\n of falling...';
         var text2 = '...then you wake up\n  in your bed';
-
         var text3 = 'Sometimes you dream\n of being in your bed...';
         var text4 = '...then you wake up...';
 
         var initYOffset = -5000;
         var centeredTextX = game.width/2
-
         var titleArea = game.add.text(centeredTextX, initYOffset, "CADOO", styleTitle);
         centerIt(titleArea);
         var text1Area = game.add.text(centeredTextX, initYOffset, text1, style);
-        centerIt(text1Area);
         var text2Area = game.add.text(centeredTextX, initYOffset, text2, style);
-        centerIt(text2Area);
         var startGameButton = game.add.text(centeredTextX, initYOffset, startGameText, style);
-        centerIt(startGameButton);
-
         var scoreboardButton = game.add.text(centeredTextX, initYOffset, "[ Scoreboard ]", style);
-        centerIt(scoreboardButton);
-
         var goPullRequestsButton = game.add.text(centeredTextX, initYOffset, "[ Ask New Feautures ]", style);
-        centerIt(goPullRequestsButton);
-
-
         var creditsButton = game.add.text(centeredTextX, initYOffset, creditsText, style);
-        centerIt(creditsButton);
-
         var text3Area = game.add.text(centeredTextX, initYOffset, text3, style);
-        centerIt(text3Area);
         var text4Area = game.add.text(centeredTextX, initYOffset, text4, style);
-        centerIt(text4Area);
-
         var creditsArea = game.add.text(centeredTextX, initYOffset, 'Paolo Burelli (Lead Artist)\nJurgo Boemo(Lead Geologist)\nPaolo Turello(Lead Obstacles Maker)\nFrancesco Zanitti (Lead Relationships Manager)', styleSmall);
-        centerIt(creditsArea);
         var returnInitArea = game.add.text(centeredTextX, initYOffset, '<Return To Intro', style);
+
+        var intro1Img = game.add.sprite(centeredTextX, initYOffset, 'intro1');
+        var intro2Img = game.add.sprite(centeredTextX, initYOffset, 'intro2');
 
         text1Area.inputEnabled = true;
         text2Area.inputEnabled = true;
@@ -105,13 +90,6 @@ module.exports = function (game) {
         creditsButton.inputEnabled = true;
         returnInitArea.inputEnabled = true;
         
-        var intro1Img = game.add.sprite(centeredTextX, initYOffset, 'intro1');
-        centerIt(intro1Img);
-
-        var intro2Img = game.add.sprite(centeredTextX, initYOffset, 'intro2');
-        centerIt(intro2Img);
-
-
         var bodyElements = [
             text1Area,
             text2Area,
@@ -127,6 +105,9 @@ module.exports = function (game) {
             intro2Img
         ];
 
+        bodyElements.forEach(function(el){
+            centerIt(el);
+        });
 
         var hideAll = function hideAll(){
             bodyElements.forEach(function(el){
@@ -134,6 +115,7 @@ module.exports = function (game) {
                 el.y = -5000;
             });
         }
+        
         var hideCurScreen = function hideCurScreen(){
             curShowTweens.forEach(function(tween){
                 tween.stop()
@@ -143,7 +125,6 @@ module.exports = function (game) {
             });
             hideAll();
         }
-
 
         var startGame = function(){
             hideCurScreen();
@@ -225,10 +206,8 @@ module.exports = function (game) {
             returnInitArea.alpha = 1;
             returnInitArea.y =  game.world.centerY/2 + 100;
 
-
         }
 
-        //startGameButton = game.add.button(game.world.centerX - 95, 400, 'button', from2to3, this, 2, 1, 0);
         startGameButton.events.onInputUp.add(goIntro1);
         scoreboardButton.events.onInputUp.add(goScoreboard);
         goPullRequestsButton.events.onInputUp.add(goPullRequests);
@@ -242,14 +221,9 @@ module.exports = function (game) {
         returnInitArea.events.onInputUp.add(showInitialScreen);
 
         showInitialScreen();
-        
-        //game.add.text(game.world.centerX/2, 0, 'Quick Start', style)
-        //game.add.text(centeredTextX, initYOffset, "Skip Intro", style)
-
     };
 
-    gameState.update = function (game) {
-    }
+    gameState.update = function (game) {}
 
     return gameState;
 };
