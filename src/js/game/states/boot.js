@@ -7,7 +7,7 @@ module.exports = function(game) {
 
   boot.create = function () {
       
-    Parse.initialize("0XC2Fw1zG9HcGxxHWwCXKPwV8NZuHrHct0N0DxVj", "DDLX2bdWogdCN6uSQLMpjSYIBybBeD2bxnFQUhjq");
+    //Parse.initialize("0XC2Fw1zG9HcGxxHWwCXKPwV8NZuHrHct0N0DxVj", "DDLX2bdWogdCN6uSQLMpjSYIBybBeD2bxnFQUhjq");
   
 
     if (properties.showStats) {

@@ -8,8 +8,8 @@ var Phaser = require('Phaser')
     , preloader: require('./states/preloader.js')
     , menu: require('./states/menu.js')
     , game: require('./states/game.js')
-    , insertname: require('./states/insertname.js')
-    , scoreboard: require('./states/scoreboard.js')
+    //, insertname: require('./states/insertname.js')
+    //, scoreboard: require('./states/scoreboard.js')
     }
   
 
